@@ -1,0 +1,109 @@
+﻿<Window x:Class="DetSad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DetSad"
+        mc:Ignorable="d"
+        Style="{StaticResource ModernWindowStyle}"
+        WindowStartupLocation="CenterScreen">
+    <!--ОСНОВНОЙ ФОН #5AA8E1-->
+    <Border Background="#5AA8E1" CornerRadius="20, 20, 20, 20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="300*"/>
+                <RowDefinition Height="450*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <!--ВЕРХНЯЯ ПАНЕЛЬ УПРАВЛЕНИЯ-->
+
+            <Border  Background="#328ac9" BorderThickness="0" CornerRadius="20, 20, 0, 0"
+  Name="br_up" Cursor="SizeAll" Height="40" VerticalAlignment="Center"  >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90*"/>
+                        <ColumnDefinition Width="90*"/>
+                        <ColumnDefinition Width="90*"/>
+                        <ColumnDefinition Width="103*"/>
+                        <ColumnDefinition Width="77*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--закрыть-->
+                    <Button Content="❌"
+        FontFamily="Fonts/#Dosis" 
+        FontSize="17" 
+        Cursor="Hand"
+        Name="Btn_Close"
+        Grid.Column="4"
+        Background="Transparent"
+        ToolTip="Закрыть"
+        Style="{StaticResource ButtonClearTheme}"
+        BorderThickness="0" 
+        HorizontalAlignment="Left"
+        FontWeight="Bold"
+        VerticalAlignment="Center" Margin="110,0,0,0" RenderTransformOrigin="0.494,0.547" Height="20" Width="24">
+                    </Button>
+
+                    <!--свернуть-->
+                    <Button Content="━"
+        FontFamily="Fonts/#Dosis" 
+        FontSize="40" 
+        Name="Btn_minim"
+        Grid.Column="4"
+        Cursor="Hand"
+        Background="Transparent"
+        FontWeight="Bold"
+        ToolTip="Свернуть"
+        Style="{StaticResource ButtonClearTheme}" 
+        BorderThickness="0" 
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top" Margin="68,-6,0,0" Width="31" Height="46"/>
+
+                    <!--перезапуск-->
+                    <Button Content="⟲"
+        FontFamily="Fonts/#Dosis" 
+        FontSize="30" 
+        Grid.Column="4"
+        Name="Btn_perezapusk"
+        Cursor="Hand"
+        Background="Transparent"
+        ToolTip="Перезагрузить"
+        FontWeight="Bold"
+        Style="{StaticResource ButtonClearTheme}" 
+        BorderThickness="0" 
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top" Margin="29,2,0,0" Width="31" Height="30"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="13*"/>
+                    <RowDefinition Height="280*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="500*"/>
+                    <ColumnDefinition Width="200*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" 
+                           TextWrapping="Wrap" Text="Добро жаловать!"
+                           Height="100" Width="480"
+                           Style="{StaticResource ModernTextBlockStart}" Margin="0,187,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="500*"/>
+                    <ColumnDefinition Width="200*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Style="{StaticResource ModernButtonStart}" Content="ВОЙТИ В АККАУНТ" HorizontalAlignment="Center" VerticalAlignment="Top" Height="63" Width="308" Click="WindowAuth_Click"/>
+            </Grid>
+
+        </Grid>
+
+
+    </Border>
+</Window>

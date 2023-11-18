@@ -1,0 +1,24 @@
+﻿<Application x:Class="DetSad.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DetSad"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--СТИЛИ ОКОН И ДЛЯ ВСЕГО ПРОЕКТА-->
+                <ResourceDictionary Source="Theme\ModernWindowStyle.xaml"/>
+                
+
+                <!--СТИЛИ ДЛЯ ЭЛЕМЕНТОВ-->
+                <ResourceDictionary Source="Theme\ModernButtonStyle.xaml"/>
+                <ResourceDictionary Source="Theme\ModernTextBlock.xaml"/>
+                <ResourceDictionary Source="Theme\ModernLabelStyle.xaml"/>
+                <ResourceDictionary Source="Theme\ModernTextBoxStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+
+
+    </Application.Resources>
+</Application>
