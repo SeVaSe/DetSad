@@ -12,8 +12,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40*"/>
-                <RowDefinition Height="300*"/>
-                <RowDefinition Height="450*"/>
+                <RowDefinition Height="375*"/>
+                <RowDefinition Height="375*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <!--ВЕРХНЯЯ ПАНЕЛЬ УПРАВЛЕНИЯ-->
@@ -90,8 +90,8 @@
 
                 <TextBlock Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" 
                            TextWrapping="Wrap" Text="Добро жаловать!"
-                           Height="100" Width="480"
-                           Style="{StaticResource ModernTextBlockStart}" Margin="0,187,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
+                           Height="71" Width="480"
+                           Style="{StaticResource ModernTextBlockStart}" Margin="0,266,0,0" VerticalAlignment="Top"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>

@@ -31,6 +31,9 @@ namespace DetSad.Windows
             br_up.MouseMove += cntrlCl.Window_MouseMove;
         }
 
-       
+        private void SignUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
