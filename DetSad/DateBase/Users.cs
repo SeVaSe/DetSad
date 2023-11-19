@@ -14,12 +14,6 @@ namespace DetSad.DateBase
     
     public partial class Users
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
-        {
-            this.EventsSchedule = new HashSet<EventsSchedule>();
-        }
-    
         public int UserID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -28,8 +22,6 @@ namespace DetSad.DateBase
         public Nullable<int> GroupID { get; set; }
     
         public virtual Children Children { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EventsSchedule> EventsSchedule { get; set; }
         public virtual Groups Groups { get; set; }
     }
 }

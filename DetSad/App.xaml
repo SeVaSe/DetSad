@@ -15,6 +15,8 @@
                 <ResourceDictionary Source="Theme\ModernTextBlock.xaml"/>
                 <ResourceDictionary Source="Theme\ModernLabelStyle.xaml"/>
                 <ResourceDictionary Source="Theme\ModernTextBoxStyle.xaml"/>
+                <ResourceDictionary Source="Theme\ModernFrameStyle.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

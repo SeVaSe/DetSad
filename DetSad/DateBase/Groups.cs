@@ -18,6 +18,7 @@ namespace DetSad.DateBase
         public Groups()
         {
             this.Children = new HashSet<Children>();
+            this.EventsSchedule = new HashSet<EventsSchedule>();
             this.Users = new HashSet<Users>();
         }
     
@@ -26,6 +27,8 @@ namespace DetSad.DateBase
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Children> Children { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EventsSchedule> EventsSchedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users> Users { get; set; }
     }

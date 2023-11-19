@@ -15,11 +15,11 @@ namespace DetSad.DateBase
     public partial class EventsSchedule
     {
         public int EventID { get; set; }
-        public System.DateTime EventDate { get; set; }
+        public string EventDate { get; set; }
         public System.TimeSpan EventTime { get; set; }
         public string EventName { get; set; }
-        public int UsersID { get; set; }
+        public int GroupID { get; set; }
     
-        public virtual Users Users { get; set; }
+        public virtual Groups Groups { get; set; }
     }
 }

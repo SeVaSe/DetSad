@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="ChildID" />
           </Key>
-          <Property Name="ChildID" Type="int" Nullable="false" />
+          <Property Name="ChildID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GroupID" Type="int" Nullable="false" />
           <Property Name="ChildName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DateOfBirth" Type="date" Nullable="false" />
@@ -25,7 +25,7 @@
           <Key>
             <PropertyRef Name="ContractID" />
           </Key>
-          <Property Name="ContractID" Type="int" Nullable="false" />
+          <Property Name="ContractID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ChildID" Type="int" Nullable="false" />
           <Property Name="DocumentName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
@@ -33,24 +33,24 @@
           <Key>
             <PropertyRef Name="EventID" />
           </Key>
-          <Property Name="EventID" Type="int" Nullable="false" />
-          <Property Name="EventDate" Type="date" Nullable="false" />
-          <Property Name="EventTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventDate" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="EventTime" Type="time" Precision="0" Nullable="false" />
           <Property Name="EventName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="UsersID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Groups">
           <Key>
             <PropertyRef Name="GroupID" />
           </Key>
-          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GroupName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="MedicalRecords">
           <Key>
             <PropertyRef Name="RecordID" />
           </Key>
-          <Property Name="RecordID" Type="int" Nullable="false" />
+          <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ChildID" Type="int" Nullable="false" />
           <Property Name="DocumentName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
@@ -68,7 +68,7 @@
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Role" Type="nvarchar(max)" Nullable="false" />
@@ -123,15 +123,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EventsSchedule_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+        <Association Name="FK_EventsSchedule_Groups">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="EventsSchedule" Type="Self.EventsSchedule" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
             </Principal>
             <Dependent Role="EventsSchedule">
-              <PropertyRef Name="UsersID" />
+              <PropertyRef Name="GroupID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -171,8 +171,8 @@
             <End Role="Children" EntitySet="Children" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_EventsSchedule_Users" Association="Self.FK_EventsSchedule_Users">
-            <End Role="Users" EntitySet="Users" />
+          <AssociationSet Name="FK_EventsSchedule_Groups" Association="Self.FK_EventsSchedule_Groups">
+            <End Role="Groups" EntitySet="Groups" />
             <End Role="EventsSchedule" EntitySet="EventsSchedule" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_Groups" Association="Self.FK_Users_Groups">
@@ -189,7 +189,7 @@
           <Key>
             <PropertyRef Name="ChildID" />
           </Key>
-          <Property Name="ChildID" Type="Int32" Nullable="false" />
+          <Property Name="ChildID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GroupID" Type="Int32" Nullable="false" />
           <Property Name="ChildName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
@@ -209,7 +209,7 @@
           <Key>
             <PropertyRef Name="ContractID" />
           </Key>
-          <Property Name="ContractID" Type="Int32" Nullable="false" />
+          <Property Name="ContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ChildID" Type="Int32" Nullable="false" />
           <Property Name="DocumentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Children" Relationship="Self.FK__Contracts__Child__44FF419A" FromRole="Contracts" ToRole="Children" />
@@ -218,27 +218,28 @@
           <Key>
             <PropertyRef Name="EventID" />
           </Key>
-          <Property Name="EventID" Type="Int32" Nullable="false" />
-          <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="EventTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventDate" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EventTime" Type="Time" Nullable="false" Precision="0" />
           <Property Name="EventName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UsersID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_EventsSchedule_Users" FromRole="EventsSchedule" ToRole="Users" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK_EventsSchedule_Groups" FromRole="EventsSchedule" ToRole="Groups" />
         </EntityType>
         <EntityType Name="Groups">
           <Key>
             <PropertyRef Name="GroupID" />
           </Key>
-          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GroupName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Children" Relationship="Self.FK__Children__GroupI__398D8EEE" FromRole="Groups" ToRole="Children" />
+          <NavigationProperty Name="EventsSchedule" Relationship="Self.FK_EventsSchedule_Groups" FromRole="Groups" ToRole="EventsSchedule" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Groups" FromRole="Groups" ToRole="Users" />
         </EntityType>
         <EntityType Name="MedicalRecords">
           <Key>
             <PropertyRef Name="RecordID" />
           </Key>
-          <Property Name="RecordID" Type="Int32" Nullable="false" />
+          <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ChildID" Type="Int32" Nullable="false" />
           <Property Name="DocumentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Children" Relationship="Self.FK__MedicalRe__Child__4222D4EF" FromRole="MedicalRecords" ToRole="Children" />
@@ -257,14 +258,13 @@
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ChildID" Type="Int32" />
           <Property Name="GroupID" Type="Int32" />
           <NavigationProperty Name="Children" Relationship="Self.FK__Users__ChildID__3C69FB99" FromRole="Users" ToRole="Children" />
-          <NavigationProperty Name="EventsSchedule" Relationship="Self.FK_EventsSchedule_Users" FromRole="Users" ToRole="EventsSchedule" />
           <NavigationProperty Name="Groups" Relationship="Self.FK_Users_Groups" FromRole="Users" ToRole="Groups" />
         </EntityType>
         <Association Name="FK__Children__GroupI__398D8EEE">
@@ -315,15 +315,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EventsSchedule_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+        <Association Name="FK_EventsSchedule_Groups">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="EventsSchedule" Type="Self.EventsSchedule" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
             </Principal>
             <Dependent Role="EventsSchedule">
-              <PropertyRef Name="UsersID" />
+              <PropertyRef Name="GroupID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -363,8 +363,8 @@
             <End Role="Children" EntitySet="Children" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_EventsSchedule_Users" Association="Self.FK_EventsSchedule_Users">
-            <End Role="Users" EntitySet="Users" />
+          <AssociationSet Name="FK_EventsSchedule_Groups" Association="Self.FK_EventsSchedule_Groups">
+            <End Role="Groups" EntitySet="Groups" />
             <End Role="EventsSchedule" EntitySet="EventsSchedule" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_Groups" Association="Self.FK_Users_Groups">
@@ -411,7 +411,7 @@
                 <ScalarProperty Name="EventDate" ColumnName="EventDate" />
                 <ScalarProperty Name="EventTime" ColumnName="EventTime" />
                 <ScalarProperty Name="EventName" ColumnName="EventName" />
-                <ScalarProperty Name="UsersID" ColumnName="UsersID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
