@@ -49,8 +49,9 @@ namespace DetSad.Pages
             using (var context = new KindergartenDBEntities())
             {
                 var events = context.EventsSchedule
-                    .Where(e => e.GroupID == groupID &&
-                                e.EventDate.Substring(3, 5) == month.ToString())
+                    .Where(e => e.GroupID == groupID)
+                    .ToList() // Получаем данные из базы
+                    .Where(e => int.Parse(e.EventDate.Split('.')[1]) == month) // Фильтруем по месяцу
                     .Select(e => new Event
                     {
                         EventDate = e.EventDate,
@@ -62,6 +63,9 @@ namespace DetSad.Pages
                 return events;
             }
         }
+
+
+
 
         public int GetTeacherGroupID(int teacherID)
         {
@@ -75,6 +79,8 @@ namespace DetSad.Pages
                 return 0; // Возвращаем значение по умолчанию, если что-то пошло не так
             }
         }
+
+        
 
 
         private void CalendarPage_Loaded(object sender, RoutedEventArgs e)

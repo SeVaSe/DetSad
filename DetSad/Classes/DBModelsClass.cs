@@ -12,4 +12,6 @@ namespace DetSad.Classes
         public string EventTime { get; set; }
         public string EventName { get; set; }
     }
+
+    
 }

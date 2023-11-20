@@ -94,7 +94,7 @@ Name="br_up" Cursor="SizeAll" Height="40" VerticalAlignment="Center"  >
             <Frame Grid.Row="2"
                    Background="Transparent"
                    Name="DetTeachFrame"
-                    Source="\Pages\CalendarPage.xaml"
+                    Source="\Pages\TeacherPages\CalendarPage.xaml"
                     Style="{StaticResource ModernFrame}" Margin="10,5,10,0" 
            />
 
