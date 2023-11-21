@@ -17,8 +17,6 @@ namespace DetSad.DateBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Children()
         {
-            this.Contracts = new HashSet<Contracts>();
-            this.MedicalRecords = new HashSet<MedicalRecords>();
             this.Users = new HashSet<Users>();
         }
     
@@ -31,15 +29,13 @@ namespace DetSad.DateBase
         public string FatherName { get; set; }
         public string FatherNumber { get; set; }
         public string Allergy { get; set; }
-        public string MedicalCertificate { get; set; }
-        public string Contract { get; set; }
+        public Nullable<int> MedicalCertificateID { get; set; }
+        public Nullable<int> ContractID { get; set; }
     
         public virtual Groups Groups { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contracts> Contracts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MedicalRecords> MedicalRecords { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users> Users { get; set; }
+        public virtual Contracts Contracts { get; set; }
+        public virtual MedicalRecords MedicalRecords { get; set; }
     }
 }

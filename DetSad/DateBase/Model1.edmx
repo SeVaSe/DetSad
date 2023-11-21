@@ -18,15 +18,14 @@
           <Property Name="FatherName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="FatherNumber" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Allergy" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="MedicalCertificate" Type="nvarchar" MaxLength="200" />
-          <Property Name="Contract" Type="nvarchar" MaxLength="200" />
+          <Property Name="MedicalCertificateID" Type="int" />
+          <Property Name="ContractID" Type="int" />
         </EntityType>
         <EntityType Name="Contracts">
           <Key>
             <PropertyRef Name="ContractID" />
           </Key>
           <Property Name="ContractID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ChildID" Type="int" Nullable="false" />
           <Property Name="DocumentName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="EventsSchedule">
@@ -51,7 +50,6 @@
             <PropertyRef Name="RecordID" />
           </Key>
           <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ChildID" Type="int" Nullable="false" />
           <Property Name="DocumentName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -87,30 +85,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contracts__Child__44FF419A">
-          <End Role="Children" Type="Self.Children" Multiplicity="1" />
-          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Children">
-              <PropertyRef Name="ChildID" />
-            </Principal>
-            <Dependent Role="Contracts">
-              <PropertyRef Name="ChildID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MedicalRe__Child__4222D4EF">
-          <End Role="Children" Type="Self.Children" Multiplicity="1" />
-          <End Role="MedicalRecords" Type="Self.MedicalRecords" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Children">
-              <PropertyRef Name="ChildID" />
-            </Principal>
-            <Dependent Role="MedicalRecords">
-              <PropertyRef Name="ChildID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Users__ChildID__3C69FB99">
           <End Role="Children" Type="Self.Children" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -120,6 +94,30 @@
             </Principal>
             <Dependent Role="Users">
               <PropertyRef Name="ChildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Children_Contracts">
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="0..1" />
+          <End Role="Children" Type="Self.Children" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contracts">
+              <PropertyRef Name="ContractID" />
+            </Principal>
+            <Dependent Role="Children">
+              <PropertyRef Name="ContractID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Children_MedicalRecords">
+          <End Role="MedicalRecords" Type="Self.MedicalRecords" Multiplicity="0..1" />
+          <End Role="Children" Type="Self.Children" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalRecords">
+              <PropertyRef Name="RecordID" />
+            </Principal>
+            <Dependent Role="Children">
+              <PropertyRef Name="MedicalCertificateID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -159,17 +157,17 @@
             <End Role="Groups" EntitySet="Groups" />
             <End Role="Children" EntitySet="Children" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contracts__Child__44FF419A" Association="Self.FK__Contracts__Child__44FF419A">
-            <End Role="Children" EntitySet="Children" />
-            <End Role="Contracts" EntitySet="Contracts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MedicalRe__Child__4222D4EF" Association="Self.FK__MedicalRe__Child__4222D4EF">
-            <End Role="Children" EntitySet="Children" />
-            <End Role="MedicalRecords" EntitySet="MedicalRecords" />
-          </AssociationSet>
           <AssociationSet Name="FK__Users__ChildID__3C69FB99" Association="Self.FK__Users__ChildID__3C69FB99">
             <End Role="Children" EntitySet="Children" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Children_Contracts" Association="Self.FK_Children_Contracts">
+            <End Role="Contracts" EntitySet="Contracts" />
+            <End Role="Children" EntitySet="Children" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Children_MedicalRecords" Association="Self.FK_Children_MedicalRecords">
+            <End Role="MedicalRecords" EntitySet="MedicalRecords" />
+            <End Role="Children" EntitySet="Children" />
           </AssociationSet>
           <AssociationSet Name="FK_EventsSchedule_Groups" Association="Self.FK_EventsSchedule_Groups">
             <End Role="Groups" EntitySet="Groups" />
@@ -198,21 +196,20 @@
           <Property Name="FatherName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FatherNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Allergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MedicalCertificate" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Contract" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MedicalCertificateID" Type="Int32" />
+          <Property Name="ContractID" Type="Int32" />
           <NavigationProperty Name="Groups" Relationship="Self.FK__Children__GroupI__398D8EEE" FromRole="Children" ToRole="Groups" />
-          <NavigationProperty Name="Contracts" Relationship="Self.FK__Contracts__Child__44FF419A" FromRole="Children" ToRole="Contracts" />
-          <NavigationProperty Name="MedicalRecords" Relationship="Self.FK__MedicalRe__Child__4222D4EF" FromRole="Children" ToRole="MedicalRecords" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Users__ChildID__3C69FB99" FromRole="Children" ToRole="Users" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_Children_Contracts" FromRole="Children" ToRole="Contracts" />
+          <NavigationProperty Name="MedicalRecords" Relationship="Self.FK_Children_MedicalRecords" FromRole="Children" ToRole="MedicalRecords" />
         </EntityType>
         <EntityType Name="Contracts">
           <Key>
             <PropertyRef Name="ContractID" />
           </Key>
           <Property Name="ContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ChildID" Type="Int32" Nullable="false" />
           <Property Name="DocumentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Children" Relationship="Self.FK__Contracts__Child__44FF419A" FromRole="Contracts" ToRole="Children" />
+          <NavigationProperty Name="Children" Relationship="Self.FK_Children_Contracts" FromRole="Contracts" ToRole="Children" />
         </EntityType>
         <EntityType Name="EventsSchedule">
           <Key>
@@ -240,9 +237,8 @@
             <PropertyRef Name="RecordID" />
           </Key>
           <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ChildID" Type="Int32" Nullable="false" />
           <Property Name="DocumentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Children" Relationship="Self.FK__MedicalRe__Child__4222D4EF" FromRole="MedicalRecords" ToRole="Children" />
+          <NavigationProperty Name="Children" Relationship="Self.FK_Children_MedicalRecords" FromRole="MedicalRecords" ToRole="Children" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -279,30 +275,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contracts__Child__44FF419A">
-          <End Role="Children" Type="Self.Children" Multiplicity="1" />
-          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Children">
-              <PropertyRef Name="ChildID" />
-            </Principal>
-            <Dependent Role="Contracts">
-              <PropertyRef Name="ChildID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MedicalRe__Child__4222D4EF">
-          <End Role="Children" Type="Self.Children" Multiplicity="1" />
-          <End Role="MedicalRecords" Type="Self.MedicalRecords" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Children">
-              <PropertyRef Name="ChildID" />
-            </Principal>
-            <Dependent Role="MedicalRecords">
-              <PropertyRef Name="ChildID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Users__ChildID__3C69FB99">
           <End Role="Children" Type="Self.Children" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -312,6 +284,30 @@
             </Principal>
             <Dependent Role="Users">
               <PropertyRef Name="ChildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Children_Contracts">
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="0..1" />
+          <End Role="Children" Type="Self.Children" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contracts">
+              <PropertyRef Name="ContractID" />
+            </Principal>
+            <Dependent Role="Children">
+              <PropertyRef Name="ContractID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Children_MedicalRecords">
+          <End Role="MedicalRecords" Type="Self.MedicalRecords" Multiplicity="0..1" />
+          <End Role="Children" Type="Self.Children" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalRecords">
+              <PropertyRef Name="RecordID" />
+            </Principal>
+            <Dependent Role="Children">
+              <PropertyRef Name="MedicalCertificateID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -351,17 +347,17 @@
             <End Role="Groups" EntitySet="Groups" />
             <End Role="Children" EntitySet="Children" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contracts__Child__44FF419A" Association="Self.FK__Contracts__Child__44FF419A">
-            <End Role="Children" EntitySet="Children" />
-            <End Role="Contracts" EntitySet="Contracts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MedicalRe__Child__4222D4EF" Association="Self.FK__MedicalRe__Child__4222D4EF">
-            <End Role="Children" EntitySet="Children" />
-            <End Role="MedicalRecords" EntitySet="MedicalRecords" />
-          </AssociationSet>
           <AssociationSet Name="FK__Users__ChildID__3C69FB99" Association="Self.FK__Users__ChildID__3C69FB99">
             <End Role="Children" EntitySet="Children" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Children_Contracts" Association="Self.FK_Children_Contracts">
+            <End Role="Contracts" EntitySet="Contracts" />
+            <End Role="Children" EntitySet="Children" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Children_MedicalRecords" Association="Self.FK_Children_MedicalRecords">
+            <End Role="MedicalRecords" EntitySet="MedicalRecords" />
+            <End Role="Children" EntitySet="Children" />
           </AssociationSet>
           <AssociationSet Name="FK_EventsSchedule_Groups" Association="Self.FK_EventsSchedule_Groups">
             <End Role="Groups" EntitySet="Groups" />
@@ -390,8 +386,8 @@
                 <ScalarProperty Name="FatherName" ColumnName="FatherName" />
                 <ScalarProperty Name="FatherNumber" ColumnName="FatherNumber" />
                 <ScalarProperty Name="Allergy" ColumnName="Allergy" />
-                <ScalarProperty Name="MedicalCertificate" ColumnName="MedicalCertificate" />
-                <ScalarProperty Name="Contract" ColumnName="Contract" />
+                <ScalarProperty Name="MedicalCertificateID" ColumnName="MedicalCertificateID" />
+                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -399,7 +395,6 @@
             <EntityTypeMapping TypeName="KindergartenDBModel.Contracts">
               <MappingFragment StoreEntitySet="Contracts">
                 <ScalarProperty Name="ContractID" ColumnName="ContractID" />
-                <ScalarProperty Name="ChildID" ColumnName="ChildID" />
                 <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -427,7 +422,6 @@
             <EntityTypeMapping TypeName="KindergartenDBModel.MedicalRecords">
               <MappingFragment StoreEntitySet="MedicalRecords">
                 <ScalarProperty Name="RecordID" ColumnName="RecordID" />
-                <ScalarProperty Name="ChildID" ColumnName="ChildID" />
                 <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
               </MappingFragment>
             </EntityTypeMapping>

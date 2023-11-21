@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdditPages\CreateOpenSpravkaPage.xaml.cs">
+      <DependentUpon>CreateOpenSpravkaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\DBModelsClass.cs" />
     <Compile Include="Classes\OpenWindowClass.cs" />
     <Compile Include="Classes\ShowInfoUserClass.cs" />
@@ -121,6 +124,10 @@
     <Compile Include="Windows\WindowTeacher.xaml.cs">
       <DependentUpon>WindowTeacher.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdditPages\CreateOpenSpravkaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -139,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TeacherPages\CalendarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\ModernBorderStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

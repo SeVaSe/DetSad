@@ -27,4 +27,31 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
+    <!--текстБлок для данных названия в мед справках-->
+    <Style TargetType="{x:Type TextBlock}" x:Key="ModernTextBlockMedSpravkaNames">
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="Foreground" Value="#0079D1"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!--текстБлок для данных мед-->
+    <Style TargetType="{x:Type TextBlock}" x:Key="ModernTextBlockMedData">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!--текстБлок для данных мед-->
+    <Style TargetType="{x:Type TextBlock}" x:Key="ModernTextBlockMedData2">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
 </ResourceDictionary>

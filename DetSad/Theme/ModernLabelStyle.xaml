@@ -6,5 +6,9 @@
         <Setter Property="FontWeight" Value="ExtraBold"/>
     </Style>
 
-  
+    <Style TargetType="{x:Type Label}" x:Key="ModernLabelMedStyle">
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="Foreground" Value="#0079D1"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+    </Style>
 </ResourceDictionary>

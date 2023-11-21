@@ -14,10 +14,16 @@ namespace DetSad.DateBase
     
     public partial class MedicalRecords
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MedicalRecords()
+        {
+            this.Children = new HashSet<Children>();
+        }
+    
         public int RecordID { get; set; }
-        public int ChildID { get; set; }
         public string DocumentName { get; set; }
     
-        public virtual Children Children { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Children> Children { get; set; }
     }
 }
