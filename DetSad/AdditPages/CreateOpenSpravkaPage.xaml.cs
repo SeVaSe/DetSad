@@ -1,5 +1,6 @@
 ﻿using DetSad.Classes;
 using DetSad.DateBase;
+using DetSad.Pages.DoctorPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +55,7 @@ namespace DetSad.AdditPages
 
         private void ButtonBackUp_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new MedSpravkaModel());
+            NavigationService?.Navigate(new MedSpravkiPage());
         }
     }
 }
