@@ -15,6 +15,7 @@ namespace DetSad.Classes
 
     public class MedSpravkaModel
     {
+        public int ChildID { get; set; }
         public string FIO { get; set; }
         public string Birth { get; set; }
         public string Allergy { get; set; }

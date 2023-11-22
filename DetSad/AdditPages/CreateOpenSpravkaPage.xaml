@@ -70,8 +70,8 @@
                     <ColumnDefinition Width="240*"/>
                 </Grid.ColumnDefinitions>
                 <Button Content="Вернуться назад" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="268" Click="ButtonBackUp_Click"/>
-                <Button Content="Открыть справку" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Grid.Column="1" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="251"/>
-                <Button Content="Загрузить справку" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Grid.Column="2" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="250"/>
+                <Button Content="Открыть справку" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Grid.Column="1" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="251" Click="ButtonOpenSpravka_Click"/>
+                <Button Content="Загрузить справку" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Grid.Column="2" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="250" Click="ButtonDownloadSpravka_Click"/>
             </Grid>
         </Grid>
 

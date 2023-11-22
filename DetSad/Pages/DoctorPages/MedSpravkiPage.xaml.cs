@@ -53,6 +53,7 @@ namespace DetSad.Pages.DoctorPages
 
                     MedSpravkaModel info = new MedSpravkaModel
                     {
+                        ChildID = child.ChildID,
                         FIO = child.ChildName,
                         Birth = child.DateOfBirth.ToString(),
                         Allergy = child.Allergy,
