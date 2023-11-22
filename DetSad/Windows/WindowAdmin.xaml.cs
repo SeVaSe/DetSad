@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DetSad.Windows
@@ -30,9 +31,16 @@ namespace DetSad.Windows
             br_up.MouseLeftButtonDown += cntrlCl.Window_MouseLeftButtonDown;
             br_up.MouseMove += cntrlCl.Window_MouseMove;
 
-            TxtBl_name.Text = InfoUserControl.GetLogin();
         }
 
-        
+        private void Dogovor_Click(object sender, RoutedEventArgs e)
+        {
+            DateFrame.NavigationService?.Navigate(new Pages.AdminPages.AdmDogovorPage());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("СПРАВКИ");
+        }
     }
 }

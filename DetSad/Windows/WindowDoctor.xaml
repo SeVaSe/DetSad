@@ -88,6 +88,7 @@ Name="br_up" Cursor="SizeAll" Height="40" VerticalAlignment="Center"  >
                 </Grid.ColumnDefinitions>
                 <Image HorizontalAlignment="Left" Height="92" Source="\Res\Images\LogoBee_img.png" VerticalAlignment="Center" Width="116" Margin="30,0,0,0"/>
                 <Button Style="{StaticResource ModernButtonsMenu}" Grid.Column="1" Content="мед. данные" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="65"/>
+                <Button Style="{StaticResource ModernButtonsMenu}" Grid.Column="3" Content="выйти" HorizontalAlignment="Left" VerticalAlignment="Center" Width="117" Height="64" Margin="123,0,0,0" Click="ExitMenu_Click"/>
 
             </Grid>
             <Frame Grid.Row="2"

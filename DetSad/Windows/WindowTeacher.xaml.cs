@@ -44,5 +44,13 @@ namespace DetSad.Windows
         {
             MessageBox.Show("");
         }
+
+        private void ExitMenu_Click(object sender, RoutedEventArgs e)
+        {
+            var winTeac = GetWindow(this) as WindowTeacher;
+            OpenWindowClass.OpenWindow<MainWindow>();
+            InfoUserControl.SetLogin("noap");
+            winTeac.Close();
+        }
     }
 }

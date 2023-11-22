@@ -12,7 +12,8 @@ WindowStartupLocation="CenterScreen">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40*"/>
-                <RowDefinition Height="750*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="650*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <!--ВЕРХНЯЯ ПАНЕЛЬ УПРАВЛЕНИЯ-->
@@ -75,7 +76,23 @@ Name="br_up" Cursor="SizeAll" Height="40" VerticalAlignment="Center"  >
       VerticalAlignment="Top" Margin="29,2,0,0" Width="31" Height="30"/>
                 </Grid>
             </Border>
-            <TextBlock x:Name="TxtBl_name" HorizontalAlignment="Left" FontSize="40" Margin="216,280,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="120" Width="511"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180*"/>
+                    <ColumnDefinition Width="190*"/>
+                    <ColumnDefinition Width="160*"/>
+                    <ColumnDefinition Width="190*"/>
+                    <ColumnDefinition Width="180*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image HorizontalAlignment="Center" Height="92" Grid.Column="2" Source="\Res\Images\LogoBee_img.png" VerticalAlignment="Center" Width="116"/>
+                <Button Style="{StaticResource ModernButtonsMenu}" Content="календарь" HorizontalAlignment="Left" VerticalAlignment="Center" Width="175" Height="64" Grid.Column="0" Margin="5,0,0,0"/>
+                <Button Style="{StaticResource ModernButtonsMenu}" Grid.Column="1" Content="моя группа" HorizontalAlignment="Left" VerticalAlignment="Center" Width="170" Height="64" Margin="10,0,0,0"/>
+                <Button Style="{StaticResource ModernButtonsMenu}" Content="мед. данные" HorizontalAlignment="Center" VerticalAlignment="Center" Width="190" Height="64" Grid.Column="3" Click="Button_Click"/>
+                <Button Style="{StaticResource ModernButtonsMenu}" Grid.Column="4" Content="договора" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="64" Click="Dogovor_Click"/>
+
+            </Grid>
+            <Frame Name="DateFrame" Background="Transparent" Source="\Pages\AdminPages\AdmDogovorPage.xaml" Style="{StaticResource ModernFrame}" Grid.Row="2"/>
 
 
 
