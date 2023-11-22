@@ -11,4 +11,10 @@
         <Setter Property="Foreground" Value="#0079D1"/>
         <Setter Property="FontWeight" Value="ExtraBold"/>
     </Style>
+
+    <Style TargetType="{x:Type Label}" x:Key="ModernLabelContrStyle">
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="Foreground" Value="#0079D1"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
+    </Style>
 </ResourceDictionary>

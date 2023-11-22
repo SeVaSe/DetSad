@@ -1,0 +1,76 @@
+﻿<Page x:Class="DetSad.AdditPages.CreateDogovorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DetSad.AdditPages"
+      mc:Ignorable="d" 
+            Width="880" Height="650" 
+Title="CreateOpenSpravkaPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="500*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Создание договара" Style="{StaticResource ModernTextBlockStart}" FontSize="60" HorizontalAlignment="Left" TextAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Height="98" Width="785"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="420*"/>
+                <RowDefinition Height="80*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350*"/>
+                    <ColumnDefinition Width="530*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                </Grid.RowDefinitions>
+                <Label Content="ФИО ребенка" Style="{StaticResource ModernLabelContrStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Дата рождения" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="ФИО матери" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Номер матери" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Серия номер паспорта" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Кем выдан" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Дата выдачи" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Адрес проживания" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Дата начала договора" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Окончание" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center" Width="157" Height="50" Grid.Column="1" Margin="160,0,0,0"/>
+
+
+                <TextBox Grid.Column="1" Grid.Row="0" Name="TxtBox_FIOChild" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Name="TxtBox_Birth" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Name="TxtBox_Mom" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="3" Name="TxtBox_NumbMom" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="4" Name="TxtBox_SeriaNumPasp" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="5" Name="TxtBox_IssuedBy" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="6" Name="TxtBox_DateIssuance" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_Adres" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+
+                <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_StartContract" Style="{StaticResource ModernTextBoxContractData}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Height="41" Margin="1,46,0,0" Grid.RowSpan="2"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_EndContract" Style="{StaticResource ModernTextBoxContractData}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Height="41" Margin="351,46,0,0" Grid.RowSpan="2"/>
+
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300*"/>
+                    <ColumnDefinition Width="240*"/>
+                    <ColumnDefinition Width="240*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Вернуться назад" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="268" Click="ButtonBackUp_Click"/>
+                <Button Content="Создать договор" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Grid.Column="2" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="250" Click="ButtonDownloadSpravka_Click"/>
+            </Grid>
+        </Grid>
+
+
+    </Grid>
+</Page>

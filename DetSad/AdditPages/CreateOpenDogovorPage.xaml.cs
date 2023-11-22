@@ -97,7 +97,7 @@ namespace DetSad.AdditPages
 
         private void ButtonDownloadSpravka_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService?.Navigate(new CreateDogovorPage());
         }
     }
 }

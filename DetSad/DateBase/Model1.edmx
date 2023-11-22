@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище KindergartenDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище KindergartenDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Children">
           <Key>
             <PropertyRef Name="ChildID" />
@@ -179,7 +179,8 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KindergartenDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -198,11 +199,11 @@
           <Property Name="Allergy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MedicalCertificateID" Type="Int32" />
           <Property Name="ContractID" Type="Int32" />
+          <Property Name="IsHere" Type="Boolean" />
           <NavigationProperty Name="Groups" Relationship="Self.FK__Children__GroupI__398D8EEE" FromRole="Children" ToRole="Groups" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Users__ChildID__3C69FB99" FromRole="Children" ToRole="Users" />
           <NavigationProperty Name="Contracts" Relationship="Self.FK_Children_Contracts" FromRole="Children" ToRole="Contracts" />
           <NavigationProperty Name="MedicalRecords" Relationship="Self.FK_Children_MedicalRecords" FromRole="Children" ToRole="MedicalRecords" />
-          <Property Name="IsHere" Type="Boolean" />
         </EntityType>
         <EntityType Name="Contracts">
           <Key>
@@ -378,7 +379,6 @@
           <EntitySetMapping Name="Children">
             <EntityTypeMapping TypeName="KindergartenDBModel.Children">
               <MappingFragment StoreEntitySet="Children">
-                <ScalarProperty Name="IsHere" ColumnName="IsHere" />
                 <ScalarProperty Name="ChildID" ColumnName="ChildID" />
                 <ScalarProperty Name="GroupID" ColumnName="GroupID" />
                 <ScalarProperty Name="ChildName" ColumnName="ChildName" />
@@ -390,6 +390,7 @@
                 <ScalarProperty Name="Allergy" ColumnName="Allergy" />
                 <ScalarProperty Name="MedicalCertificateID" ColumnName="MedicalCertificateID" />
                 <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+                <ScalarProperty Name="IsHere" ColumnName="IsHere" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

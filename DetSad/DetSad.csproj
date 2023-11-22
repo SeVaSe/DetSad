@@ -41,6 +41,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -64,6 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdditPages\CreateDogovorPage.xaml.cs">
+      <DependentUpon>CreateDogovorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdditPages\CreateOpenDogovorPage.xaml.cs">
       <DependentUpon>CreateOpenDogovorPage.xaml</DependentUpon>
     </Compile>
@@ -130,6 +137,10 @@
     <Compile Include="Windows\WindowTeacher.xaml.cs">
       <DependentUpon>WindowTeacher.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdditPages\CreateDogovorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdditPages\CreateOpenDogovorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

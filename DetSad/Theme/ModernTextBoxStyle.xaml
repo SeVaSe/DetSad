@@ -51,4 +51,104 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+    <!--TxtBox боксы договора-->
+    <Style TargetType="{x:Type TextBox}" x:Key="ModernTextBoxContract">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10"
+                        Background="White"
+                        Opacity="0.5"
+        Width="500" Height="35">
+
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1"
+                 Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}"
+                 BorderThickness="0"
+                 Background="Transparent"
+                 VerticalContentAlignment="Top"
+                 TextWrapping="Wrap"
+                 Padding="5"
+                 Foreground="#1c73ff"
+                 FontSize="20"
+                 x:Name="SearchBox"/>
+
+                            <TextBlock IsHitTestVisible="False"
+                   Text=""
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="10,10,0,0"
+                   FontSize="15"
+                   Foreground="DarkGray">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--TxtBox боксы договора даты-->
+    <Style TargetType="{x:Type TextBox}" x:Key="ModernTextBoxContractData">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="10"
+                    Background="White"
+                    Opacity="0.5"
+    Width="150" Height="35">
+
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1"
+             Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}"
+             BorderThickness="0"
+             Background="Transparent"
+             VerticalContentAlignment="Top"
+             TextWrapping="Wrap"
+             Padding="5"
+             Foreground="#1c73ff"
+             FontSize="20"
+             x:Name="SearchBox"/>
+
+                            <TextBlock IsHitTestVisible="False"
+               Text=""
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               Margin="10,10,0,0"
+               FontSize="15"
+               Foreground="DarkGray">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
