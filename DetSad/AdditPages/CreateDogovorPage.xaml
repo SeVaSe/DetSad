@@ -11,10 +11,11 @@ Title="CreateOpenSpravkaPage">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="150*"/>
+            <RowDefinition Height="50*"/>
             <RowDefinition Height="500*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Создание договара" Style="{StaticResource ModernTextBlockStart}" FontSize="60" HorizontalAlignment="Left" TextAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Height="98" Width="785"/>
-        <Grid Grid.Row="1">
+        <TextBlock Text="Создание договара" Style="{StaticResource ModernTextBlockStart}" FontSize="60" HorizontalAlignment="Left" TextAlignment="Left" Margin="10,26,0,0" TextWrapping="Wrap" Height="98" Width="785" VerticalAlignment="Top"/>
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="420*"/>
                 <RowDefinition Height="80*"/>
@@ -35,6 +36,7 @@ Title="CreateOpenSpravkaPage">
                     <RowDefinition Height="50*"/>
                     <RowDefinition Height="50*"/>
                 </Grid.RowDefinitions>
+                <Label Content="Группа" Style="{StaticResource ModernLabelContrStyle}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="330" Height="50" Margin="0,-53,0,0"/>
                 <Label Content="ФИО ребенка" Style="{StaticResource ModernLabelContrStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
                 <Label Content="Дата рождения" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
                 <Label Content="ФИО матери" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
@@ -58,6 +60,7 @@ Title="CreateOpenSpravkaPage">
 
                 <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_StartContract" Style="{StaticResource ModernTextBoxContractData}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Height="41" Margin="1,46,0,0" Grid.RowSpan="2"/>
                 <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_EndContract" Style="{StaticResource ModernTextBoxContractData}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Height="41" Margin="351,46,0,0" Grid.RowSpan="2"/>
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="TxtBox_GroupCh" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41" Margin="0,-46,0,0"/>
 
             </Grid>
             <Grid Grid.Row="1">

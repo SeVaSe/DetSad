@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Text.RegularExpressions;
 using Word = Microsoft.Office.Interop.Word;
+using DetSad.DateBase;
+using System.Diagnostics.Contracts;
+using DetSad.Classes;
 
 namespace DetSad.AdditPages
 {
@@ -44,6 +47,9 @@ namespace DetSad.AdditPages
                 Directory.CreateDirectory(destinationPath);
             }
 
+            DateTime timeNow = DateTime.Now;
+
+
             string newFilePath = System.IO.Path.Combine(destinationPath, $"Contract_{TxtBox_StartContract.Text}_{TxtBox_EndContract.Text}.docx");
 
             Word.Application wordApp = new Word.Application();
@@ -53,11 +59,49 @@ namespace DetSad.AdditPages
             ReplaceText(doc, "FIOChild", TxtBox_FIOChild.Text);
             ReplaceText(doc, "Birth", TxtBox_Birth.Text);
             ReplaceText(doc, "FIOmom", TxtBox_Mom.Text);
+            ReplaceText(doc, "AdresChild", TxtBox_Adres.Text);
+            ReplaceText(doc, "Pasp", TxtBox_SeriaNumPasp.Text);
+            ReplaceText(doc, "IssuedBy", TxtBox_IssuedBy.Text);
+            ReplaceText(doc, "DateIssuedBy", TxtBox_DateIssuance.Text);
+            ReplaceText(doc, "Datee", timeNow.ToString());
+            ReplaceText(doc, "Group", TxtBox_GroupCh.Text);
+
+
             // Продолжите для остальных TextBox'ов...
+
+
+            // ДОБАВИТЬ В БД ФИО ДЛЯ СОТ РУДНИКОВ + ДОЛЖНОСТЬ
 
             doc.SaveAs2(newFilePath);
             doc.Close();
             wordApp.Quit();
+
+            using (var db = new KindergartenDBEntities())
+            {
+                // Создание новой записи о договоре
+                var newContract = new Contracts
+                {
+                    DocumentName = $"Contract_{TxtBox_StartContract.Text}_{TxtBox_EndContract.Text}.docx",
+                };
+
+                db.Contracts.Add(newContract);
+                db.SaveChanges();
+
+                // Получение ID только что добавленного договора
+                int newContractID = newContract.ContractID;
+                int child_id = InfoChildControl.GetLogin();
+
+                // Нахождение ребенка в базе данных по имени (здесь предполагается, что у вас есть уникальное поле для имени ребенка)
+                var child = db.Children.FirstOrDefault(c => c.ChildID == child_id);
+                if (child != null)
+                {
+                    // Связывание ребенка и договора по их идентификаторам
+                    child.ContractID = newContractID;
+                    db.SaveChanges();
+                }
+            }
+
+
 
             MessageBox.Show("Договор создан");
         }

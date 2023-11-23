@@ -22,4 +22,23 @@ namespace DetSad.Classes
             return login; // Возвращение текущего значения логина
         }
     }
+
+
+
+    public class InfoChildControl
+    {
+        private static int idChild = 9999; // Строка по умолчанию для логина
+
+        // Метод для установки значения логина
+        public static void SetLogin(int log)
+        {
+            idChild = log; // Присваивание переданного значения логина переменной
+        }
+
+        // Метод для получения текущего значения логина
+        public static int GetLogin()
+        {
+            return idChild; // Возвращение текущего значения логина
+        }
+    }
 }

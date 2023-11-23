@@ -73,7 +73,7 @@
                  TextWrapping="Wrap"
                  Padding="5"
                  Foreground="#1c73ff"
-                 FontSize="20"
+                 FontSize="18"
                  x:Name="SearchBox"/>
 
                             <TextBlock IsHitTestVisible="False"
@@ -123,7 +123,7 @@
              TextWrapping="Wrap"
              Padding="5"
              Foreground="#1c73ff"
-             FontSize="20"
+             FontSize="18"
              x:Name="SearchBox"/>
 
                             <TextBlock IsHitTestVisible="False"
