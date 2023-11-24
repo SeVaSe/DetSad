@@ -19,6 +19,7 @@ using Word = Microsoft.Office.Interop.Word;
 using DetSad.DateBase;
 using System.Diagnostics.Contracts;
 using DetSad.Classes;
+using DetSad.Windows;
 
 namespace DetSad.AdditPages
 {
@@ -34,6 +35,7 @@ namespace DetSad.AdditPages
 
         private void ButtonBackUp_Click(object sender, RoutedEventArgs e)
         {
+            InfoChildControl.SetLogin(9999);
             NavigationService?.Navigate(new AdmDogovorPage());
         }
 
@@ -104,6 +106,8 @@ namespace DetSad.AdditPages
 
 
             MessageBox.Show("Договор создан");
+            InfoChildControl.SetLogin(9999);
+            NavigationService?.Navigate(new AdmDogovorPage());
         }
 
         private void ReplaceText(Word.Document doc, string placeholder, string text)

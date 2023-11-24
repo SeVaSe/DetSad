@@ -39,4 +39,11 @@ namespace DetSad.Classes
         public int? DogovorCertificateID { get; set; } // Добавьте свойство ID для справки
     }
 
+    public class StudentModel
+    {
+        public string FIO { get; set; } // ФИО студента
+        public bool IsHere { get; set; } // Состояние присутствия (True/False)
+    }
+
+
 }

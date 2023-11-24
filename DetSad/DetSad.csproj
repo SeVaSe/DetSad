@@ -77,6 +77,9 @@
     <Compile Include="AdditPages\CreateOpenSpravkaPage.xaml.cs">
       <DependentUpon>CreateOpenSpravkaPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdditPages\InfoChildPage.xaml.cs">
+      <DependentUpon>InfoChildPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\DBModelsClass.cs" />
     <Compile Include="Classes\OpenWindowClass.cs" />
     <Compile Include="Classes\ShowInfoUserClass.cs" />
@@ -125,6 +128,9 @@
     <Compile Include="Pages\TeacherPages\CalendarPage.xaml.cs">
       <DependentUpon>CalendarPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\TeacherPages\MyGroupPage.xaml.cs">
+      <DependentUpon>MyGroupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\WindowAdmin.xaml.cs">
       <DependentUpon>WindowAdmin.xaml</DependentUpon>
     </Compile>
@@ -146,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdditPages\CreateOpenSpravkaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdditPages\InfoChildPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TeacherPages\CalendarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeacherPages\MyGroupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

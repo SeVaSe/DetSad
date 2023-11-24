@@ -7,4 +7,41 @@
         <Setter Property="CornerRadius" Value="10"/>
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
+
+
+    <Style x:Key="CustomCheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Grid Width="30" Height="30" VerticalAlignment="Center">
+                            <Border x:Name="CheckBoxBorder" BorderThickness="1" CornerRadius="5" BorderBrush="White" Background="Transparent"/>
+                            <Path x:Name="CheckMark" Visibility="Collapsed" Stroke="White" StrokeThickness="2" Data="M5,13 L11,19 22,8"/>
+                        </Grid>
+                        <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="CheckBoxBorder" Property="Background" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+
+
 </ResourceDictionary>

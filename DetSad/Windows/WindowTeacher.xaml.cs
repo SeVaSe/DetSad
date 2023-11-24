@@ -1,5 +1,6 @@
 ﻿using DetSad.Classes;
 using DetSad.Pages;
+using DetSad.Pages.TeacherPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace DetSad.Windows
 
         private void MeGroup_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("");
+            DetTeachFrame.NavigationService?.Navigate(new MyGroupPage());
         }
 
         private void ExitMenu_Click(object sender, RoutedEventArgs e)

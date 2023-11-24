@@ -15,22 +15,11 @@ namespace DetSad.DateBase
     
     public partial class KindergartenDBEntities : DbContext
     {
-        private static KindergartenDBEntities _context;
-
         public KindergartenDBEntities()
             : base("name=KindergartenDBEntities")
         {
         }
-
-        public static KindergartenDBEntities GetEntities1()
-        {
-            if (_context == null)
-            {
-                _context = new KindergartenDBEntities();
-            }
-            return _context;
-        }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
