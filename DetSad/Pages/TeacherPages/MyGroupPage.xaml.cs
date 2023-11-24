@@ -116,6 +116,8 @@ namespace DetSad.Pages.TeacherPages
         // Метод, который получает список студентов для данной группы
         public List<StudentModel> GetStudentsByGroupID(int groupID)
         {
+            int uId = 99999;
+            
             using (var context = new KindergartenDBEntities())
             {
                 var students = context.Children.Where(s => s.GroupID == groupID).ToList();
@@ -123,9 +125,24 @@ namespace DetSad.Pages.TeacherPages
                 // Преобразуйте полученные данные из базы данных в объекты StudentModel
                 List<StudentModel> studentModels = students.Select(s => new StudentModel
                 {
+                    ChildID = s.ChildID,
                     FIO = s.ChildName,
+                    Birth = s.DateOfBirth.ToString(),
+                    MomName = s.MotherName,
+                    NumbMom = s.MotherNumber,
+                    DadName = s.FatherName,
+                    NumbDad = s.FatherNumber,
+                    Allergy = s.Allergy,
                     IsHere = s.IsHere ?? false // Если IsHere == null, устанавливаем значение по умолчанию
-                }).ToList();
+                }
+                ).ToList();
+
+                foreach (var u in studentModels)
+                {
+                    uId = u.ChildID;
+                }
+
+                ChildIDControl.SetLogin(uId);
 
                 return studentModels;
             }
@@ -133,14 +150,10 @@ namespace DetSad.Pages.TeacherPages
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is Border border && border.DataContext is Children student)
-            {
-                // Создание новой страницы с информацией о студенте и передача информации о нем
-                InfoChildPage descriptionPage = new InfoChildPage(student);
-                NavigationService.Navigate(descriptionPage);
-            }
-                
+            // Создание новой страницы с информацией о студенте и передача информации о нем
+            InfoChildPage descriptionPage = new InfoChildPage(ChildIDControl.GetLogin());
+            NavigationService.Navigate(descriptionPage);
+            
         }
     }
-
 }

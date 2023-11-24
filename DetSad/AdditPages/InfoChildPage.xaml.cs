@@ -1,4 +1,5 @@
-﻿using DetSad.DateBase;
+﻿using DetSad.Classes;
+using DetSad.DateBase;
 using DetSad.Pages.TeacherPages;
 using System;
 using System.Collections.Generic;
@@ -22,16 +23,35 @@ namespace DetSad.AdditPages
     /// </summary>
     public partial class InfoChildPage : Page
     {
-        public InfoChildPage(Children child)
+
+        public InfoChildPage(int childID)
         {
             InitializeComponent();
-            TxtBox_FIOChild.Text = child.ChildName;
-            TxtBox_Birth.Text = child.DateOfBirth.ToString();
-            TxtBox_Mom.Text = child.MotherName;
-            TxtBox_NumbMom.Text = child.MotherNumber;
-            TxtBox_Dad.Text = child.FatherName;
-            TxtBox_NumbDad.Text = child.FatherNumber;
-            TxtBox_Allergy.Text = child.Allergy;
+
+            using (var db = new KindergartenDBEntities())
+            {
+                var children = db.Children.ToList();
+
+                foreach (var chd in children)
+                {
+                    if (chd.ChildID == childID)
+                    {
+                        TxtBox_FIOChild.Text = chd.ChildName;
+                        TxtBox_Birth.Text = chd.DateOfBirth.ToString();
+                        TxtBox_Mom.Text = chd.MotherName;
+                        TxtBox_NumbMom.Text = chd.MotherNumber;
+                        TxtBox_Dad.Text = chd.FatherName;
+                        TxtBox_NumbDad.Text = chd.FatherNumber;
+                        TxtBox_Allergy.Text = chd.Allergy;
+                    }
+                }
+
+
+                    
+            }
+
+
+            
             
         }
 

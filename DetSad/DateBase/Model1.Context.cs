@@ -15,16 +15,22 @@ namespace DetSad.DateBase
     
     public partial class KindergartenDBEntities : DbContext
     {
+        private static KindergartenDBEntities _context;
+
         public KindergartenDBEntities()
             : base("name=KindergartenDBEntities")
         {
         }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+
+        public static KindergartenDBEntities GetEntities1()
         {
-            throw new UnintentionalCodeFirstException();
+            if (_context == null)
+            {
+                _context = new KindergartenDBEntities();
+            }
+            return _context;
         }
-    
+
         public virtual DbSet<Children> Children { get; set; }
         public virtual DbSet<Contracts> Contracts { get; set; }
         public virtual DbSet<EventsSchedule> EventsSchedule { get; set; }
