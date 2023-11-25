@@ -53,6 +53,58 @@
     </Style>
 
 
+    <Style TargetType="{x:Type TextBox}" x:Key="ModernTxtBoxCodew">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border CornerRadius="15"
+  BorderThickness="3"
+  BorderBrush="#0079D1"
+  Width="80" Height="80">
+
+                        <Grid>
+                            <Rectangle StrokeThickness="1"/>
+                            <TextBox Margin="1"
+           Text="{Binding Path=Text, RelativeSource={RelativeSource TemplatedParent}}"
+           BorderThickness="0"
+           Background="Transparent"
+           VerticalContentAlignment="Center"
+           TextAlignment="Center"
+           TextWrapping="Wrap"
+           Padding="5"
+           Foreground="#0079D1"
+           FontSize="50"
+           FontWeight="ExtraBold"
+           x:Name="SearchBox"/>
+
+                            <TextBlock IsHitTestVisible="False"
+             Text="❓ "
+              TextAlignment="Center"
+             VerticalAlignment="Center"
+             HorizontalAlignment="Center"
+             Margin="10,0,0,0"
+             FontSize="25"
+             Foreground="DarkGray">
+
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
     <!--TxtBox боксы договора-->
     <Style TargetType="{x:Type TextBox}" x:Key="ModernTextBoxContract">
         <Setter Property="Template">

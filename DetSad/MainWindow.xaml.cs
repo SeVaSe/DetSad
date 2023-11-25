@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DetSad.Windows;
+using System.Windows.Threading;
 
 namespace DetSad
 {
@@ -22,6 +23,9 @@ namespace DetSad
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string fullText = "Добро жаловать!";
+        private int currentIndex = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +35,9 @@ namespace DetSad
             Btn_perezapusk.Click += (sender, e) => cntrlCl.perezapusk_control(new MainWindow());
             br_up.MouseLeftButtonDown += cntrlCl.Window_MouseLeftButtonDown;
             br_up.MouseMove += cntrlCl.Window_MouseMove;
+
+            Loaded += YourWindow_Loaded;
+
         }
 
         private void WindowAuth_Click(object sender, RoutedEventArgs e)
@@ -38,6 +45,21 @@ namespace DetSad
             var main = GetWindow(this) as MainWindow;
             OpenWindowClass.OpenWindow<WindowAuthWorker>();
             main.Close();
+        }
+
+        private async void YourWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            await AddTextLetterByLetter();
+        }
+
+        private async Task AddTextLetterByLetter()
+        {
+            while (currentIndex < fullText.Length)
+            {
+                TxtBl_TextPrew.Text += fullText[currentIndex];
+                currentIndex++;
+                await Task.Delay(70); // Пауза между добавлением символов
+            }
         }
     }
 }

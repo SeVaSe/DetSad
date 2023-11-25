@@ -27,7 +27,7 @@ namespace DetSad.Windows
             ControlClass cntrlCl = new ControlClass(this);
             Btn_Close.Click += cntrlCl.close_control;
             Btn_minim.Click += cntrlCl.minimized_control;
-            Btn_perezapusk.Click += (sender, e) => cntrlCl.perezapusk_control(new MainWindow());
+            Btn_perezapusk.Click += (sender, e) => cntrlCl.perezapusk_control(new WindowAdmin());
             br_up.MouseLeftButtonDown += cntrlCl.Window_MouseLeftButtonDown;
             br_up.MouseMove += cntrlCl.Window_MouseMove;
 
@@ -40,7 +40,22 @@ namespace DetSad.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("СПРАВКИ");
+            DateFrame.NavigationService?.Navigate(new Pages.AdminPages.AdmMedPage());
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DateFrame.NavigationService?.Navigate(new Pages.AdminPages.AdmCalendarPage());
+        }
+
+        private void ExitMenu_Click(object sender, RoutedEventArgs e)
+        {
+            var winTeac = GetWindow(this) as WindowAdmin;
+            OpenWindowClass.OpenWindow<MainWindow>();
+            InfoUserControl.SetLogin("noap");
+            winTeac.Close();
+        }
+
+        
     }
 }

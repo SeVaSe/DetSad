@@ -87,9 +87,10 @@
                     <ColumnDefinition Width="500*"/>
                     <ColumnDefinition Width="200*"/>
                 </Grid.ColumnDefinitions>
+                <Image HorizontalAlignment="Center" Height="92" Grid.Column="1" Source="\Res\Images\LogoBee_img.png" VerticalAlignment="Top" Width="116" Margin="0,16,0,0" Grid.RowSpan="2"/>
 
-                <TextBlock Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" 
-                           TextWrapping="Wrap" Text="Добро жаловать!"
+                <TextBlock Grid.Column="1" x:Name="TxtBl_TextPrew" HorizontalAlignment="Center" Grid.Row="1" 
+                           TextWrapping="Wrap" Text=""
                            Height="71" Width="480"
                            Style="{StaticResource ModernTextBlockStart}" Margin="0,266,0,0" VerticalAlignment="Top"/>
             </Grid>

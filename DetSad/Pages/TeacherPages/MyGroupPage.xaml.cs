@@ -4,6 +4,7 @@ using DetSad.DateBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,6 +28,9 @@ namespace DetSad.Pages.TeacherPages
         {
             InitializeComponent();
             Loaded += GroupPage_Loaded;
+
+            DateTime t = DateTime.Now;
+            TxtBl_Date.Text = $"Дата: {t.ToShortDateString()}";
         }
 
         public int GetTeacherIDByLogin(string username)
@@ -55,45 +59,32 @@ namespace DetSad.Pages.TeacherPages
             }
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            CheckBox checkBox = sender as CheckBox;
-            if (checkBox != null)
-            {
-                StudentModel student = checkBox.DataContext as StudentModel;
-                if (student != null)
-                {
-                    // Получаем студента по его ФИО (или уникальному идентификатору) и обновляем IsHere
-                    UpdateIsHereInDatabase(student.FIO, true); // Обновление значения в базе данных
-                }
-            }
-        }
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            CheckBox checkBox = sender as CheckBox;
-            if (checkBox != null)
-            {
-                StudentModel student = checkBox.DataContext as StudentModel;
-                if (student != null)
-                {
-                    // Получаем студента по его ФИО (или уникальному идентификатору) и обновляем IsHere
-                    UpdateIsHereInDatabase(student.FIO, false); // Обновление значения в базе данных
-                }
-            }
-        }
 
-        // Метод для обновления значения IsHere в базе данных
-        public void UpdateIsHereInDatabase(string studentFIO, bool isHere)
+
+        // Метод для получения списка студентов для данной группы
+        public List<StudentModel> GetStudentsByGroupID(int groupID)
         {
             using (var context = new KindergartenDBEntities())
             {
-                var student = context.Children.FirstOrDefault(s => s.ChildName == studentFIO);
-                if (student != null)
+                var students = context.Children.Where(s => s.GroupID == groupID).ToList();
+
+                List<StudentModel> studentModels = students.Select(s => new StudentModel
                 {
-                    student.IsHere = isHere;
-                    context.SaveChanges(); // Сохраняем изменения в базе данных
-                }
+                     ChildID = s.ChildID,
+                     FIO = s.ChildName,
+                     Birth = s.DateOfBirth.ToString(),
+                     MomName = s.MotherName,
+                     NumbMom = s.MotherNumber,
+                     DadName = s.FatherName,
+                     NumbDad = s.FatherNumber,
+                     Allergy = s.Allergy,
+                     MedID = s.MedicalCertificateID,
+                     ContarctID = s.ContractID
+
+                 }).ToList();
+
+                return studentModels;
             }
         }
 
@@ -109,51 +100,87 @@ namespace DetSad.Pages.TeacherPages
             // Получаем список студентов для данной группы учителя
             List<StudentModel> students = GetStudentsByGroupID(groupID);
 
+            using (var c = new KindergartenDBEntities())
+            {
+                TxtBl_Group.Text = c.Groups.FirstOrDefault(s => s.GroupID == groupID)?.GroupName;
+                // Получаем актуальное состояние флажков из базы данных
+                foreach (var student in students)
+                {
+                    var dbStudent = c.Children.FirstOrDefault(s => s.ChildID == student.ChildID);
+                    if (dbStudent != null)
+                    {
+                        student.IsHere = dbStudent.IsHere ?? false;
+                    }
+                }
+            }
+
+            
+
+
             // Загружаем студентов в DataGrid
             EventsDataGrid.ItemsSource = students;
         }
-
-        // Метод, который получает список студентов для данной группы
-        public List<StudentModel> GetStudentsByGroupID(int groupID)
+        public async Task UpdateIsHereInDatabase(string studentFIO, bool isHere)
         {
-            int uId = 99999;
-            
             using (var context = new KindergartenDBEntities())
             {
-                var students = context.Children.Where(s => s.GroupID == groupID).ToList();
-
-                // Преобразуйте полученные данные из базы данных в объекты StudentModel
-                List<StudentModel> studentModels = students.Select(s => new StudentModel
+                var student = context.Children.FirstOrDefault(s => s.ChildName == studentFIO);
+                if (student != null)
                 {
-                    ChildID = s.ChildID,
-                    FIO = s.ChildName,
-                    Birth = s.DateOfBirth.ToString(),
-                    MomName = s.MotherName,
-                    NumbMom = s.MotherNumber,
-                    DadName = s.FatherName,
-                    NumbDad = s.FatherNumber,
-                    Allergy = s.Allergy,
-                    IsHere = s.IsHere ?? false // Если IsHere == null, устанавливаем значение по умолчанию
+                    student.IsHere = isHere;
+                    await context.SaveChangesAsync();
                 }
-                ).ToList();
+            }
+        }
 
-                foreach (var u in studentModels)
+        // Метод, который получает список студентов для данной группы
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            if (checkBox != null)
+            {
+                StudentModel student = checkBox.DataContext as StudentModel;
+                if (student != null)
                 {
-                    uId = u.ChildID;
+                    UpdateIsHereInDatabase(student.FIO, true);
                 }
+            }
+        }
 
-                ChildIDControl.SetLogin(uId);
-
-                return studentModels;
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            if (checkBox != null)
+            {
+                StudentModel student = checkBox.DataContext as StudentModel;
+                if (student != null)
+                {
+                    UpdateIsHereInDatabase(student.FIO, false);
+                }
             }
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Создание новой страницы с информацией о студенте и передача информации о нем
-            InfoChildPage descriptionPage = new InfoChildPage(ChildIDControl.GetLogin());
-            NavigationService.Navigate(descriptionPage);
-            
+            if (sender is Border border)
+            {
+                if (border.DataContext is StudentModel student)
+                {
+                    InfoChildPage descriptionPage = new InfoChildPage(student);
+                    NavigationService?.Navigate(descriptionPage);
+                }
+                else
+                {
+                    MessageBox.Show($"Unexpected DataContext: {border.DataContext}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Unexpected sender type.");
+            }
         }
+
+       
+
     }
 }

@@ -50,7 +50,11 @@ namespace DetSad.Classes
         public string NumbDad { get; set; } // ФИО студента
         public string Allergy { get; set; } // ФИО студента
         public bool IsHere { get; set; } // Состояние присутствия (True/False)
+        public int? MedID { get; set; } // ФИО студента
+        public int? ContarctID { get; set; } // ФИО студента
+
+
     }
 
-   
+
 }

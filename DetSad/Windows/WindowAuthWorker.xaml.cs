@@ -12,6 +12,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DetSad.Windows
@@ -109,6 +110,12 @@ namespace DetSad.Windows
                     TxtBox_Pasword.Clear();
                 }
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenWindowClass.OpenWindow<Pasw.CheckPaswWindow>();
+            this.Close();
         }
     }
 }

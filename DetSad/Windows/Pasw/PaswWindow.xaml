@@ -1,19 +1,18 @@
-﻿<Window x:Class="DetSad.Windows.WindowAdmin"
+﻿<Window x:Class="DetSad.Windows.Pasw.PaswWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DetSad.Windows"
+        xmlns:local="clr-namespace:DetSad.Windows.Pasw"
         mc:Ignorable="d"
-        Style="{StaticResource ModernWindowStyle}"
-WindowStartupLocation="CenterScreen">
+                Style="{StaticResource ModernWindowStyle}"        WindowStartupLocation="CenterScreen"
+        >
     <!--5AA8E1-->
     <Border Background="#5AA8E1" CornerRadius="20, 20, 20, 20">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40*"/>
-                <RowDefinition Height="100*"/>
-                <RowDefinition Height="650*"/>
+                <RowDefinition Height="750*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <!--ВЕРХНЯЯ ПАНЕЛЬ УПРАВЛЕНИЯ-->
@@ -73,30 +72,31 @@ Name="br_up" Cursor="SizeAll" Height="40" VerticalAlignment="Center"  >
       Style="{StaticResource ButtonClearTheme}" 
       BorderThickness="0" 
       HorizontalAlignment="Left"
-      VerticalAlignment="Top" Margin="29,2,0,0" Width="31" Height="30" />
+      VerticalAlignment="Top" Margin="29,2,0,0" Width="31" Height="30"/>
                 </Grid>
             </Border>
             <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="180*"/>
-                    <ColumnDefinition Width="190*"/>
-                    <ColumnDefinition Width="160*"/>
-                    <ColumnDefinition Width="190*"/>
-                    <ColumnDefinition Width="180*"/>
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150*"/>
+                    <RowDefinition Height="150*"/>
+                    <RowDefinition Height="450*"/>
+                </Grid.RowDefinitions>
+                <Image HorizontalAlignment="Center" Height="96" Source="\Res\Images\LogoBee_img.png" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Восстановление пароля" FontSize="60" HorizontalContentAlignment="Center" Style="{StaticResource ModernLabelStyle}" Margin="68,0,68,0" Grid.Row="1" VerticalAlignment="Center" Height="98"/>
 
-                <Image HorizontalAlignment="Center" Height="92" Grid.Column="2" Source="\Res\Images\LogoBee_img.png" VerticalAlignment="Center" Width="116"/>
-                <Button Style="{StaticResource ModernButtonsMenu}" Content="календарь" HorizontalAlignment="Left" VerticalAlignment="Center" Width="175" Height="64" Grid.Column="0" Margin="5,0,0,0" Click="Button_Click_1"/>
-                <Button Style="{StaticResource ModernButtonsMenu}" Grid.Column="1" Content="моя группа" HorizontalAlignment="Left" VerticalAlignment="Center" Width="170" Height="64" Margin="10,0,0,0"/>
-                <Button Style="{StaticResource ModernButtonsMenu}" Content="мед. данные" HorizontalAlignment="Center" VerticalAlignment="Center" Width="190" Height="64" Grid.Column="3" Click="Button_Click"/>
-                <Button Style="{StaticResource ModernButtonsMenu}" Grid.Column="4" Content="договора" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Height="64" Click="Dogovor_Click"/>
+
+                <TextBox x:Name="TxtBox_Code1" HorizontalAlignment="Left" Style="{StaticResource ModernTxtBoxCodew}" Margin="262,3,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" Height="94"/>
+                <TextBox x:Name="TxtBox_Code2" HorizontalAlignment="Left" Style="{StaticResource ModernTxtBoxCodew}" Margin="376,3,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Height="94"/>
+                <TextBox x:Name="TxtBox_Code3" HorizontalAlignment="Left" Style="{StaticResource ModernTxtBoxCodew}" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Height="94" Margin="494,3,0,0"/>
+                <TextBox x:Name="TxtBox_Code4" HorizontalAlignment="Left" Style="{StaticResource ModernTxtBoxCodew}" Margin="608,3,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Height="94"/>
+
+
+                <Label Content="КОД" Style="{StaticResource ModernLabelMedStyle}" FontSize="30" HorizontalAlignment="Left" Margin="176,25,0,0" Grid.Row="2" VerticalAlignment="Top" Width="86"/>
+                <Button Content="Проверить код" Style="{StaticResource ModernButtonStart}" HorizontalAlignment="Left" Margin="321,123,0,0" Grid.Row="2" VerticalAlignment="Top" Height="65" Width="264" Click="CodeVerify_Click"/>
+
+
 
             </Grid>
-
-            <Button Style="{StaticResource ModernButtonsMenu}" Content="выйти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Height="40" Margin="10,-5,0,0" Click="ExitMenu_Click"/>
-
-            <Frame Name="DateFrame" Background="Transparent" Source="\Pages\AdminPages\AdmDogovorPage.xaml" Style="{StaticResource ModernFrame}" Grid.Row="2"/>
-
 
 
 

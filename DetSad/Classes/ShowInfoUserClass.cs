@@ -59,4 +59,32 @@ namespace DetSad.Classes
             return idChild; // Возвращение текущего значения логина
         }
     }
+
+
+    public class DataDBControlClass
+    {
+        private static string nameAdmin = "noap";
+
+        public static void SetName(string name)
+        {
+            nameAdmin = name;
+        }
+
+        public static string GetName()
+        {
+            return nameAdmin;
+        }
+    }
+
+
+    public class ControlCodePaswClass
+    {
+        private static string codePasw = "noap";
+
+        public static string CodePasw
+        {
+            get { return codePasw; }
+            set { codePasw = value; }
+        }
+    }
 }

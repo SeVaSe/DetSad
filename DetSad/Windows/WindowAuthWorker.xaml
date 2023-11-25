@@ -104,7 +104,7 @@ Name="br_up" Cursor="SizeAll" Height="40" VerticalAlignment="Center"  >
                              VerticalAlignment="Top" Width="408" Height="64" Margin="10,5,0,0"
                              Style="{StaticResource ModernTextBoxAnswerCommentSend}"/>
                     <Button Grid.Column="1" Style="{StaticResource ModernButtonStart}" Content="ВОЙТИ" HorizontalAlignment="Left" Margin="53,0,0,0" Grid.Row="2" VerticalAlignment="Top" Height="66" Width="194" Click="SignUser_Click"/>
-                    <Button Grid.Column="1" Content="Забыли пароль?" Style="{StaticResource ModernButtonsForgotPasw}" HorizontalAlignment="Left" Margin="40,71,0,0" Grid.Row="2" VerticalAlignment="Top" Width="220" Height="41"/>
+                    <Button Grid.Column="1" Content="Забыли пароль?" Style="{StaticResource ModernButtonsForgotPasw}" HorizontalAlignment="Left" Margin="40,71,0,0" Grid.Row="2" VerticalAlignment="Top" Width="220" Height="41" Click="Button_Click"/>
                 </Grid>
 
             </Grid>

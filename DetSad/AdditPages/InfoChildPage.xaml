@@ -46,15 +46,15 @@ Title="CreateOpenSpravkaPage">
                 <Label Content="Договор" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
 
 
-                <TextBox Grid.Column="1" Grid.Row="0" Name="TxtBox_FIOChild" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
-                <TextBox Grid.Column="1" Grid.Row="1" Name="TxtBox_Birth" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
-                <TextBox Grid.Column="1" Grid.Row="2" Name="TxtBox_Mom" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
-                <TextBox Grid.Column="1" Grid.Row="3" Name="TxtBox_NumbMom" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
-                <TextBox Grid.Column="1" Grid.Row="4" Name="TxtBox_Dad" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
-                <TextBox Grid.Column="1" Grid.Row="5" Name="TxtBox_NumbDad" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
-                <TextBox Grid.Column="1" Grid.Row="6" Name="TxtBox_Allergy" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
-                <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_Spravka" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
-                <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_Dogovor" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="509" Height="41" Margin="1,46,0,0" Grid.RowSpan="2"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Name="TxtBox_FIOChild" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Name="TxtBox_Birth" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Name="TxtBox_Mom" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="3" Name="TxtBox_NumbMom" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="4" Name="TxtBox_Dad" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="5" Name="TxtBox_NumbDad" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="6" Name="TxtBox_Allergy" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_Spravka" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_Dogovor" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="509" Height="41" Margin="1,46,0,0" Grid.RowSpan="2"/>
 
             </Grid>
             <Grid Grid.Row="1">
@@ -64,9 +64,9 @@ Title="CreateOpenSpravkaPage">
                     <ColumnDefinition Width="240*"/>
                 </Grid.ColumnDefinitions>
                 <Button Content="Вернуться назад" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="268" Click="ButtonBackUp_Click"/>
-                <Button Content="Изменить данные" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Grid.Column="2" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="250" Click="ButtonDownloadSpravka_Click"/>
             </Grid>
         </Grid>
+        <Image HorizontalAlignment="Left" Name="ImgChild" Height="132"  Margin="220,6,0,0" VerticalAlignment="Top" Width="138"/>
 
 
     </Grid>

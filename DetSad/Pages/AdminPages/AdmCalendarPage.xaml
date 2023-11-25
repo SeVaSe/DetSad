@@ -1,0 +1,70 @@
+﻿<Page x:Class="DetSad.Pages.AdminPages.AdmCalendarPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DetSad.Pages.AdminPages"
+      mc:Ignorable="d" 
+        Width="880" Height="650"
+  Title="CalendarPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="500*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="#0079D1" BorderThickness="3" CornerRadius="20" Width="880" Margin="0,0,0,5" Background="White" Opacity="0.5" Padding="0,5,0,5" Grid.Row="1">
+            <DataGrid Name="EventsDataGrid" AutoGenerateColumns="False" BorderBrush="Transparent" Background="Transparent" BorderThickness="0" 
+          GridLinesVisibility="None" HeadersVisibility="None" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridRow">
+                                    <Border BorderBrush="#0079D1" BorderThickness="0,0,0,2" Margin="0,5,0,5">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"/>
+                                                <ColumnDefinition Width="140*"/>
+                                                <ColumnDefinition Width="640"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="{Binding EventDate}" Style="{StaticResource ModernTextBlockCalendar}" 
+                                       Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            <TextBlock Text="{Binding EventTime}" Style="{StaticResource ModernTextBlockCalendar}" 
+                                       Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
+                                            <TextBlock Text="{Binding EventName}" Style="{StaticResource ModernTextBlockCalendar}" 
+                                       Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="45,0,0,0"/>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.RowStyle>
+            </DataGrid>
+        </Border>
+
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120*"/>
+                    <ColumnDefinition Width="120*"/>
+                    <ColumnDefinition Width="640*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="дата" Style="{StaticResource ModernTextBlockCalendarNames}" Height="48" Width="100"/>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Style="{StaticResource ModernTextBlockCalendarNames}" Text="время" Height="48" Width="115"/>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="название мероприятия" TextAlignment="Left" Style="{StaticResource ModernTextBlockCalendarNames}" Height="48" Width="402" Margin="28,0,0,0"/>
+            </Grid>
+            <TextBlock Name="TxtBl_Mounth" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Месяц Год" Style="{StaticResource ModernTextBlockStart}" Height="70" Width="510" Margin="0,5,0,0" VerticalAlignment="Top"/>
+        </Grid>
+
+
+    </Grid>
+</Page>

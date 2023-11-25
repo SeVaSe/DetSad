@@ -31,6 +31,11 @@ namespace DetSad.DateBase
             return _context;
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
+    
         public virtual DbSet<Children> Children { get; set; }
         public virtual DbSet<Contracts> Contracts { get; set; }
         public virtual DbSet<EventsSchedule> EventsSchedule { get; set; }
