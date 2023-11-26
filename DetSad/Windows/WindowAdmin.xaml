@@ -85,7 +85,7 @@ Name="br_up" Cursor="SizeAll" Height="40" VerticalAlignment="Center"  >
                     <ColumnDefinition Width="180*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image HorizontalAlignment="Center" Height="92" Grid.Column="2" Source="\Res\Images\LogoBee_img.png" VerticalAlignment="Center" Width="116"/>
+                <Image Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" HorizontalAlignment="Center" Height="92" Grid.Column="2" Source="\Res\Images\LogoBee_img.png" VerticalAlignment="Center" Width="116"/>
                 <Button Style="{StaticResource ModernButtonsMenu}" Content="календарь" HorizontalAlignment="Left" VerticalAlignment="Center" Width="175" Height="64" Grid.Column="0" Margin="5,0,0,0" Click="Button_Click_1"/>
                 <Button Style="{StaticResource ModernButtonsMenu}" Grid.Column="1" Content="моя группа" HorizontalAlignment="Left" VerticalAlignment="Center" Width="170" Height="64" Margin="10,0,0,0" Click="Button_Click_2"/>
                 <Button Style="{StaticResource ModernButtonsMenu}" Content="мед. данные" HorizontalAlignment="Center" VerticalAlignment="Center" Width="190" Height="64" Grid.Column="3" Click="Button_Click"/>

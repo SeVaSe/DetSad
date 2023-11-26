@@ -83,6 +83,9 @@
     <Compile Include="AdditPages\InfoChildPage.xaml.cs">
       <DependentUpon>InfoChildPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdditPages\MenuUserPage.xaml.cs">
+      <DependentUpon>MenuUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\DBModelsClass.cs" />
     <Compile Include="Classes\OpenWindowClass.cs" />
     <Compile Include="Classes\ShowInfoUserClass.cs" />
@@ -181,6 +184,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdditPages\InfoChildPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdditPages\MenuUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

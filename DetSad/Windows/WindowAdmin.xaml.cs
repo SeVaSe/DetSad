@@ -60,5 +60,11 @@ namespace DetSad.Windows
         {
             DateFrame.NavigationService?.Navigate(new Pages.AdminPages.AdmGroupPage());
         }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Проверка отправителя события и получение данных модели Assignments
+            DateFrame.NavigationService.Navigate(new AdditPages.MenuUserPage());
+        }
     }
 }

@@ -74,6 +74,7 @@
           <Property Name="Role" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ChildID" Type="int" />
           <Property Name="GroupID" Type="int" />
+          <Property Name="UserFIO" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK__Children__GroupI__398D8EEE">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
@@ -265,6 +266,7 @@
           <Property Name="GroupID" Type="Int32" />
           <NavigationProperty Name="Children" Relationship="Self.FK__Users__ChildID__3C69FB99" FromRole="Users" ToRole="Children" />
           <NavigationProperty Name="Groups" Relationship="Self.FK_Users_Groups" FromRole="Users" ToRole="Groups" />
+          <Property Name="UserFIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__Children__GroupI__398D8EEE">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
@@ -445,6 +447,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="KindergartenDBModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserFIO" ColumnName="UserFIO" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

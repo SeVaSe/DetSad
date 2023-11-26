@@ -90,7 +90,7 @@ namespace DetSad.AdditPages
                 }
                 else
                 {
-                    // Обработка случая, если студент не найден в базе данных
+                    MessageBox.Show("Сотрудник не найден в БД");
                 }
 
             }

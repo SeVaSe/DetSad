@@ -1,0 +1,17 @@
+﻿<Page x:Class="DetSad.AdditPages.MenuUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DetSad.AdditPages"
+      mc:Ignorable="d" 
+                              Width="880" Height="650" 
+Title="CreateOpenSpravkaPage">
+
+    <Grid>
+        <TextBlock Name="TxtBl_Role" Style="{StaticResource ModernTextBlockMedData}" FontSize="50" HorizontalAlignment="Center" Margin="0,208,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="117" Width="672"/>
+        <TextBlock Name="TxtBl_NameFio" Style="{StaticResource ModernTextBlockMedData}" FontSize="35" HorizontalAlignment="Center" Margin="0,330,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="117" Width="756"/>
+
+
+    </Grid>
+</Page>

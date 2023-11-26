@@ -20,6 +20,7 @@ namespace DetSad.DateBase
         public string Role { get; set; }
         public Nullable<int> ChildID { get; set; }
         public Nullable<int> GroupID { get; set; }
+        public string UserFIO { get; set; }
     
         public virtual Children Children { get; set; }
         public virtual Groups Groups { get; set; }

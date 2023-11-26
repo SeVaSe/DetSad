@@ -53,5 +53,11 @@ namespace DetSad.Windows
             InfoUserControl.SetLogin("noap");
             winTeac.Close();
         }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Проверка отправителя события и получение данных модели Assignments
+            DetTeachFrame.NavigationService.Navigate(new AdditPages.MenuUserPage());
+        }
     }
 }
