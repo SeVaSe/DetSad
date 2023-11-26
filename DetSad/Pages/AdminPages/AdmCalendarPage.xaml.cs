@@ -26,12 +26,12 @@ namespace DetSad.Pages.AdminPages
         {
             InitializeComponent();
             Loaded += CalendarPage_Loaded; // Подписываемся на событие загрузки страницы
-            TxtBl_Mounth.Text = DateTime.Now.ToString("MMMM yyyy");
-
+            TxtBl_Mounth.Text = DateTime.Now.ToString("MMMM yyyy"); // Устанавливаем текущий месяц и год в текстовом поле
         }
 
         public int GetTeacherIDByLogin(string username)
         {
+            // Метод для получения ID учителя по его имени пользователя
             using (var context = new KindergartenDBEntities())
             {
                 var teacher = context.Users.FirstOrDefault(u => u.Username == username && u.Role == "teacher");
@@ -43,9 +43,9 @@ namespace DetSad.Pages.AdminPages
             }
         }
 
-
         public class EventWithGroupInfo
         {
+            // Модель, содержащая информацию о событиях и связанной с ними информации о группе
             public string EventDate { get; set; }
             public string EventTime { get; set; }
             public string EventName { get; set; }
@@ -54,6 +54,7 @@ namespace DetSad.Pages.AdminPages
 
         public List<EventWithGroupInfo> GetEventsForAllGroupsAndMonth(int month)
         {
+            // Получение всех событий с информацией о группах для указанного месяца
             using (var context = new KindergartenDBEntities())
             {
                 var allEventsWithGroups = context.EventsSchedule
@@ -70,17 +71,13 @@ namespace DetSad.Pages.AdminPages
                     .Where(e => int.Parse(e.EventDate.Split('.')[1]) == month) // Фильтруем по месяцу
                     .ToList();
 
-                return eventsForMonth;
+                return eventsForMonth; // Возвращаем список событий для указанного месяца
             }
         }
 
-
-
-
-
-
         public int GetTeacherGroupID(int teacherID)
         {
+            // Метод для получения ID группы учителя по его ID
             using (var context = new KindergartenDBEntities())
             {
                 var teacher = context.Users.FirstOrDefault(u => u.UserID == teacherID && u.Role == "teacher");
@@ -92,9 +89,6 @@ namespace DetSad.Pages.AdminPages
             }
         }
 
-
-
-
         private void CalendarPage_Loaded(object sender, RoutedEventArgs e)
         {
             // Получаем текущий месяц и год
@@ -104,9 +98,9 @@ namespace DetSad.Pages.AdminPages
             // Получаем мероприятия для всех групп и текущего месяца
             List<EventWithGroupInfo> eventsForAllGroupsAndMonth = GetEventsForAllGroupsAndMonth(currentMonth);
 
+            // Устанавливаем полученные события в DataGrid для отображения на странице
             EventsDataGrid.ItemsSource = eventsForAllGroupsAndMonth;
         }
-
 
 
     }

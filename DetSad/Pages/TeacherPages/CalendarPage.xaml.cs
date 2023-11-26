@@ -26,12 +26,13 @@ namespace DetSad.Pages
         {
             InitializeComponent();
             Loaded += CalendarPage_Loaded; // Подписываемся на событие загрузки страницы
-            TxtBl_Mounth.Text = DateTime.Now.ToString("MMMM yyyy");
-
+            TxtBl_Mounth.Text = DateTime.Now.ToString("MMMM yyyy"); // Устанавливаем текст с текущим месяцем и годом
         }
 
+        // Получение ID учителя по логину
         public int GetTeacherIDByLogin(string username)
         {
+            // Открываем контекст базы данных
             using (var context = new KindergartenDBEntities())
             {
                 var teacher = context.Users.FirstOrDefault(u => u.Username == username && u.Role == "teacher");
@@ -43,7 +44,7 @@ namespace DetSad.Pages
             }
         }
 
-
+        // Получение списка событий для группы и месяца
         public List<Event> GetEventsForGroupAndMonth(int groupID, int month)
         {
             using (var context = new KindergartenDBEntities())
@@ -64,9 +65,7 @@ namespace DetSad.Pages
             }
         }
 
-
-
-
+        // Получение ID группы учителя по его ID
         public int GetTeacherGroupID(int teacherID)
         {
             using (var context = new KindergartenDBEntities())
@@ -80,9 +79,7 @@ namespace DetSad.Pages
             }
         }
 
-        
-
-
+        // Метод, вызываемый при загрузке страницы
         private void CalendarPage_Loaded(object sender, RoutedEventArgs e)
         {
             string username = InfoUserControl.GetLogin(); // Получаем логин учителя
@@ -93,13 +90,13 @@ namespace DetSad.Pages
             // Получаем текущий месяц и год
             DateTime currentDate = DateTime.Now;
             int currentMonth = currentDate.Month;
-            
+
             // Получаем мероприятия для текущей группы и текущего месяца
             List<Event> eventsForGroupAndMonth = GetEventsForGroupAndMonth(groupID, currentMonth);
 
+            // Устанавливаем источник данных для DataGrid событий
             EventsDataGrid.ItemsSource = eventsForGroupAndMonth;
         }
-
-
     }
+
 }

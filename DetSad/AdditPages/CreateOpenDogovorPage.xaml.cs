@@ -39,7 +39,6 @@ namespace DetSad.AdditPages
 
             TxtBl_NameGroup.Text = $"Группа \"{GetNameGroup(dogovorDoc.NameGroup)}\"";
 
-            MessageBox.Show(dogovorDoc.ChildID.ToString());
         }
 
         public string GetNameGroup(int grID)

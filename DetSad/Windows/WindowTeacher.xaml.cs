@@ -46,13 +46,7 @@ namespace DetSad.Windows
             DetTeachFrame.NavigationService?.Navigate(new MyGroupPage());
         }
 
-        private void ExitMenu_Click(object sender, RoutedEventArgs e)
-        {
-            var winTeac = GetWindow(this) as WindowTeacher;
-            OpenWindowClass.OpenWindow<MainWindow>();
-            InfoUserControl.SetLogin("noap");
-            winTeac.Close();
-        }
+        
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

@@ -25,22 +25,26 @@ namespace DetSad.Pages.AdminPages
         public AdmDogovorPage()
         {
             InitializeComponent();
-            Loaded += Dogovor_Loaded;
+            Loaded += Dogovor_Loaded; // Подписываемся на событие загрузки страницы
         }
 
         private void Dogovor_Loaded(object sender, RoutedEventArgs e)
         {
+            // Создаем список для хранения информации о договорах ребенка
             List<DogovorModel> childInfoList = new List<DogovorModel>();
 
             using (var db = new KindergartenDBEntities())
             {
-                var children = db.Children.ToList();
+                var children = db.Children.ToList(); // Получаем список всех детей
 
                 foreach (var child in children)
                 {
                     string nameDogovor;
+
+                    // Проверяем наличие договора у ребенка
                     if (child.ContractID != null)
                     {
+                        // Получаем информацию о договоре ребенка
                         var dogovoRecord = db.Contracts.FirstOrDefault(m => m.ContractID == child.ContractID);
                         nameDogovor = dogovoRecord != null ? dogovoRecord.DocumentName : "нет договора";
                     }
@@ -49,6 +53,7 @@ namespace DetSad.Pages.AdminPages
                         nameDogovor = "нет договора";
                     }
 
+                    // Создаем модель с информацией о договоре ребенка и добавляем в список
                     DogovorModel info = new DogovorModel
                     {
                         ChildID = child.ChildID,
@@ -60,26 +65,25 @@ namespace DetSad.Pages.AdminPages
                         NameDogovor = nameDogovor,
                         NameGroup = child.GroupID,
                         DogovorCertificateID = child.ContractID
-
                     };
 
-                    childInfoList.Add(info);
+                    childInfoList.Add(info); // Добавляем информацию о договоре в список
                 }
             }
 
-            EventsDataGrid.ItemsSource = childInfoList;
+            EventsDataGrid.ItemsSource = childInfoList; // Устанавливаем список в DataGrid для отображения на странице
         }
-
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Проверка отправителя события и получение данных модели Assignments
+            // Проверяем отправителя события и получаем данные модели DogovorModel
             if (sender is Border border && border.DataContext is DogovorModel dogovor)
             {
-                // Создание новой страницы с описанием задания и переход на нее
+                // Создаем новую страницу с открытием информации о договоре и переходим на нее
                 AdditPages.CreateOpenDogovorPage descriptionPage = new AdditPages.CreateOpenDogovorPage(dogovor);
                 NavigationService.Navigate(descriptionPage);
             }
         }
+
     }
 }

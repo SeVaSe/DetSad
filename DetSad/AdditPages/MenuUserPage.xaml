@@ -12,6 +12,7 @@ Title="CreateOpenSpravkaPage">
         <TextBlock Name="TxtBl_Role" Style="{StaticResource ModernTextBlockMedData}" FontSize="50" HorizontalAlignment="Center" Margin="0,208,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="117" Width="672"/>
         <TextBlock Name="TxtBl_NameFio" Style="{StaticResource ModernTextBlockMedData}" FontSize="35" HorizontalAlignment="Center" Margin="0,330,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="117" Width="756"/>
 
+        <Button Style="{StaticResource ModernButtonStart}" Content="выйти" HorizontalAlignment="Center" VerticalAlignment="Top" Width="380" Height="89" Margin="0,447,0,0" Click="ExitMenu_Click"/>
 
     </Grid>
 </Page>

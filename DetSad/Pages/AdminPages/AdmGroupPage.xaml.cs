@@ -172,12 +172,12 @@ namespace DetSad.Pages.AdminPages
                 }
                 else
                 {
-                    MessageBox.Show($"Unexpected DataContext: {border.DataContext}");
+                    MessageBox.Show($"Таких данных не существует");
                 }
             }
             else
             {
-                MessageBox.Show("Unexpected sender type.");
+                MessageBox.Show("Таких данных не существует");
             }
         }
     }

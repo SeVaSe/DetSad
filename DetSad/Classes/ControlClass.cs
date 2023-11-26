@@ -20,7 +20,7 @@ namespace DetSad.Classes
         //Закрыть
         public void close_control(object sender, RoutedEventArgs e)
         {
-            var mesClose = MessageBox.Show("Вы точно хоитет выйти?", "Подтверждение выхода", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var mesClose = MessageBox.Show("Вы точно хотите выйти?", "Подтверждение выхода", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             switch (mesClose)
             {

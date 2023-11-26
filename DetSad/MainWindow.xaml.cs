@@ -23,13 +23,17 @@ namespace DetSad
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string fullText = "Добро жаловать!";
+        private string fullText = "Добро пожаловать!";
         private int currentIndex = 0;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            // Создание экземпляра ControlClass для обработки действий с окном
             ControlClass cntrlCl = new ControlClass(this);
+
+            // Привязка обработчиков событий к методам из ControlClass
             Btn_Close.Click += cntrlCl.close_control;
             Btn_minim.Click += cntrlCl.minimized_control;
             Btn_perezapusk.Click += (sender, e) => cntrlCl.perezapusk_control(new MainWindow());
@@ -37,23 +41,27 @@ namespace DetSad
             br_up.MouseMove += cntrlCl.Window_MouseMove;
 
             Loaded += YourWindow_Loaded;
-
         }
 
         private void WindowAuth_Click(object sender, RoutedEventArgs e)
         {
+            // Получение экземпляра MainWindow
             var main = GetWindow(this) as MainWindow;
+
+            // Открытие нового окна WindowAuthWorker и закрытие текущего окна MainWindow
             OpenWindowClass.OpenWindow<WindowAuthWorker>();
             main.Close();
         }
 
         private async void YourWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            // Асинхронное добавление текста по буквам при загрузке окна
             await AddTextLetterByLetter();
         }
 
         private async Task AddTextLetterByLetter()
         {
+            // Постепенное добавление символов текста в TxtBl_TextPrew
             while (currentIndex < fullText.Length)
             {
                 TxtBl_TextPrew.Text += fullText[currentIndex];
@@ -62,4 +70,5 @@ namespace DetSad
             }
         }
     }
+
 }

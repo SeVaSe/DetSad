@@ -25,22 +25,26 @@ namespace DetSad.Pages.AdminPages
         public AdmMedPage()
         {
             InitializeComponent();
-            Loaded += MedSpravka_Loaded;
+            Loaded += MedSpravka_Loaded; // Подписываемся на событие загрузки страницы
         }
 
         private void MedSpravka_Loaded(object sender, RoutedEventArgs e)
         {
+            // Создаем список для хранения информации о медицинских справках детей
             List<MedSpravkaModel> childInfoList = new List<MedSpravkaModel>();
 
             using (var db = new KindergartenDBEntities())
             {
-                var children = db.Children.ToList();
+                var children = db.Children.ToList(); // Получаем список всех детей
 
                 foreach (var child in children)
                 {
                     string nameSpravka;
+
+                    // Проверяем наличие медицинской справки у ребенка
                     if (child.MedicalCertificateID != null)
                     {
+                        // Получаем информацию о справке ребенка
                         var medRecord = db.MedicalRecords.FirstOrDefault(m => m.RecordID == child.MedicalCertificateID);
                         nameSpravka = medRecord != null ? medRecord.DocumentName : "нет справки";
                     }
@@ -49,6 +53,7 @@ namespace DetSad.Pages.AdminPages
                         nameSpravka = "нет справки";
                     }
 
+                    // Создаем модель с информацией о медицинской справке ребенка и добавляем в список
                     MedSpravkaModel info = new MedSpravkaModel
                     {
                         ChildID = child.ChildID,
@@ -60,26 +65,25 @@ namespace DetSad.Pages.AdminPages
                         NameSpravka = nameSpravka,
                         NameGroup = child.GroupID,
                         MedicalCertificateID = child.MedicalCertificateID
-
                     };
 
-                    childInfoList.Add(info);
+                    childInfoList.Add(info); // Добавляем информацию о справке в список
                 }
             }
 
-            EventsDataGrid.ItemsSource = childInfoList;
+            EventsDataGrid.ItemsSource = childInfoList; // Устанавливаем список в DataGrid для отображения на странице
         }
-
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Проверка отправителя события и получение данных модели Assignments
+            // Проверяем отправителя события и получаем данные модели MedSpravkaModel
             if (sender is Border border && border.DataContext is MedSpravkaModel medSpr)
             {
-                // Создание новой страницы с описанием задания и переход на нее
+                // Создаем новую страницу с открытием информации о медицинской справке и переходим на нее
                 AdditPages.CreateOpenSpravkaPage descriptionPage = new AdditPages.CreateOpenSpravkaPage(medSpr);
                 NavigationService.Navigate(descriptionPage);
             }
         }
+
     }
 }

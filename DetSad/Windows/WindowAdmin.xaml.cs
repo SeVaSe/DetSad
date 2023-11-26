@@ -48,13 +48,7 @@ namespace DetSad.Windows
             DateFrame.NavigationService?.Navigate(new Pages.AdminPages.AdmCalendarPage());
         }
 
-        private void ExitMenu_Click(object sender, RoutedEventArgs e)
-        {
-            var winTeac = GetWindow(this) as WindowAdmin;
-            OpenWindowClass.OpenWindow<MainWindow>();
-            InfoUserControl.SetLogin("noap");
-            winTeac.Close();
-        }
+        
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {

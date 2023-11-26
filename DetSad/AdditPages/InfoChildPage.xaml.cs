@@ -28,7 +28,6 @@ namespace DetSad.AdditPages
         public InfoChildPage(StudentModel chd)
         {
             InitializeComponent();
-            MessageBox.Show(chd.ChildID.ToString());
             
             TxtBox_FIOChild.Text = chd.FIO;
             TxtBox_Birth.Text = chd.Birth;
@@ -92,6 +91,7 @@ namespace DetSad.AdditPages
                 else
                 {
                     // Обработка случая, если студент не найден в базе данных
+                    MessageBox.Show("Студент не найден в базе данных");
                 }
 
             }

@@ -33,13 +33,6 @@ namespace DetSad.Windows
 
         }
 
-        private void ExitMenu_Click(object sender, RoutedEventArgs e)
-        {
-            var winDoc = GetWindow(this) as WindowDoctor;
-            OpenWindowClass.OpenWindow<MainWindow>();
-            InfoUserControl.SetLogin("noap");
-            winDoc.Close();
-        }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

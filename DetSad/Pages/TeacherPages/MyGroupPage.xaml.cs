@@ -91,7 +91,7 @@ namespace DetSad.Pages.TeacherPages
         }
 
 
-
+        // Событие загрузки страницы
         private void GroupPage_Loaded(object sender, RoutedEventArgs e)
         {
             string username = InfoUserControl.GetLogin(); // Получаем логин учителя
@@ -122,6 +122,8 @@ namespace DetSad.Pages.TeacherPages
             // Загружаем студентов в DataGrid
             EventsDataGrid.ItemsSource = students;
         }
+
+        // Обновляет состояние присутствия студента в базе данных
         public async Task UpdateIsHereInDatabase(string studentFIO, bool isHere)
         {
             using (var context = new KindergartenDBEntities())
@@ -135,7 +137,7 @@ namespace DetSad.Pages.TeacherPages
             }
         }
 
-        // Метод, который получает список студентов для данной группы
+        // Обработчик события "Checked" у CheckBox
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox checkBox = sender as CheckBox;
@@ -149,6 +151,7 @@ namespace DetSad.Pages.TeacherPages
             }
         }
 
+        // Обработчик события "Unchecked" у CheckBox
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             CheckBox checkBox = sender as CheckBox;
@@ -162,6 +165,7 @@ namespace DetSad.Pages.TeacherPages
             }
         }
 
+        // Обработчик события щелчка по Border для получения дополнительной информации о студенте
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is Border border)
@@ -173,12 +177,12 @@ namespace DetSad.Pages.TeacherPages
                 }
                 else
                 {
-                    MessageBox.Show($"Unexpected DataContext: {border.DataContext}");
+                    MessageBox.Show($"Таких данных не существует");
                 }
             }
             else
             {
-                MessageBox.Show("Unexpected sender type.");
+                MessageBox.Show("Таких данных не существует");
             }
         }
 

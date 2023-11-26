@@ -93,7 +93,6 @@ Name="br_up" Cursor="SizeAll" Height="40" VerticalAlignment="Center"  >
 
             </Grid>
 
-            <Button Style="{StaticResource ModernButtonsMenu}" Content="выйти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Height="40" Margin="10,-5,0,0" Click="ExitMenu_Click"/>
 
             <Frame Name="DateFrame" Background="Transparent" Source="\Pages\AdminPages\AdmDogovorPage.xaml" Style="{StaticResource ModernFrame}" Grid.Row="2"/>
 

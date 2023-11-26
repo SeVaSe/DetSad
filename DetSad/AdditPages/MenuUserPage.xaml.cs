@@ -1,5 +1,6 @@
 ﻿using DetSad.Classes;
 using DetSad.DateBase;
+using DetSad.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,6 @@ namespace DetSad.AdditPages
 
 
             string nameUser = InfoUserControl.GetLogin();
-            MessageBox.Show(nameUser);
 
             using (var db = new KindergartenDBEntities())
             {
@@ -51,5 +51,20 @@ namespace DetSad.AdditPages
                 TxtBl_NameFio.Text = context.UserFIO;
             }
         }
+
+        private void ExitMenu_Click(object sender, RoutedEventArgs e)
+        {
+            OpenWindowClass.OpenWindow<MainWindow>();
+            InfoUserControl.SetLogin("noap");
+
+            // Получаем текущее окно, в котором находится страница
+            var currentWindow = Window.GetWindow(this);
+
+            if (currentWindow != null)
+            {
+                currentWindow.Close(); // Закрываем текущее окно
+            }
+        }
+
     }
 }

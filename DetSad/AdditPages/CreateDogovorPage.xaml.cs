@@ -49,6 +49,11 @@ namespace DetSad.AdditPages
                 Directory.CreateDirectory(destinationPath);
             }
 
+            if (TxtBox_NumbMom.Text.Length != 11)
+            {
+                MessageBox.Show("Вы ввели не правильный пароль, в нем должно быть 11 символов");
+                return;
+            }
             DateTime timeNow = DateTime.Now;
 
 
@@ -65,14 +70,12 @@ namespace DetSad.AdditPages
             ReplaceText(doc, "Pasp", TxtBox_SeriaNumPasp.Text);
             ReplaceText(doc, "IssuedBy", TxtBox_IssuedBy.Text);
             ReplaceText(doc, "DateIssuedBy", TxtBox_DateIssuance.Text);
-            ReplaceText(doc, "Datee", timeNow.ToString());
+            ReplaceText(doc, "Date", timeNow.ToString());
             ReplaceText(doc, "Group", TxtBox_GroupCh.Text);
 
 
-            // Продолжите для остальных TextBox'ов...
 
 
-            // ДОБАВИТЬ В БД ФИО ДЛЯ СОТ РУДНИКОВ + ДОЛЖНОСТЬ
 
             doc.SaveAs2(newFilePath);
             doc.Close();

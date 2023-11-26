@@ -24,11 +24,12 @@ namespace DetSad.AdditPages
     /// </summary>
     public partial class AdmInfoChild : Page
     {
+        // Конструктор страницы, который принимает модель StudentModel
         public AdmInfoChild(StudentModel chd)
         {
             InitializeComponent();
-            MessageBox.Show(chd.ChildID.ToString());
 
+            // Устанавливаем текстовые поля страницы в соответствии с данными из модели StudentModel
             TxtBox_FIOChild.Text = chd.FIO;
             TxtBox_Birth.Text = chd.Birth;
             TxtBox_Mom.Text = chd.MomName;
@@ -38,12 +39,14 @@ namespace DetSad.AdditPages
             TxtBox_Allergy.Text = chd.Allergy;
             TxtBl_NameGroup.Text = chd.Group.Substring(0, 6) + ".";
 
-
+            // Подключаемся к базе данных
             using (var sp = new KindergartenDBEntities())
             {
+                // Получаем информацию о медицинской справке и договоре из БД
                 var medS = sp.MedicalRecords.FirstOrDefault(s => s.RecordID == chd.MedID);
                 var conS = sp.Contracts.FirstOrDefault(s => s.ContractID == chd.ContarctID);
 
+                // Устанавливаем текстовые поля для отображения информации о медицинской справке и договоре
                 TxtBox_Spravka.Text = medS != null ? medS.DocumentName : "Нет информации о справке";
                 TxtBox_Dogovor.Text = conS != null ? conS.DocumentName : "Нет информации о договоре";
 
@@ -53,27 +56,25 @@ namespace DetSad.AdditPages
                 {
                     try
                     {
-                        string photoFileName = student.ImagePath; // Предполагается, что в базе хранится имя файла фотографии
+                        string photoFileName = student.ImagePath; // Получаем имя файла фотографии
 
-                        // Создаем путь к папке "PhotoCh" и добавляем имя файла
+                        // Формируем путь к файлу фотографии
                         string photoFolderPath = System.IO.Path.Combine(Environment.CurrentDirectory, "PhotoCh");
                         string fullPath = System.IO.Path.Combine(photoFolderPath, photoFileName);
 
-                        // Теперь у вас есть полный путь к файлу фотографии
-                        // Можете использовать этот путь для загрузки изображения
+                        // Загружаем изображение в элемент Image (ImgChild)
                         if (System.IO.File.Exists(fullPath))
                         {
-                            // Пример загрузки изображения в элемент Image (ImgChild)
                             BitmapImage bitmap = new BitmapImage();
                             bitmap.BeginInit();
                             bitmap.UriSource = new Uri(fullPath);
                             bitmap.EndInit();
                             ImgChild.Source = bitmap;
                         }
-
                     }
                     catch
                     {
+                        // Если возникает ошибка при загрузке фотографии, устанавливаем фото по умолчанию
                         string photoFolderPath1 = System.IO.Path.Combine(Environment.CurrentDirectory, "PhotoCh");
                         string fullPath1 = System.IO.Path.Combine(photoFolderPath1, "DEFAULT.png");
 
@@ -82,34 +83,32 @@ namespace DetSad.AdditPages
                         defaultBitmap.UriSource = new Uri(fullPath1);
                         defaultBitmap.EndInit();
                         ImgChild.Source = defaultBitmap;
-                    }                    // Получаем имя файла фотографии из базы данных
-
-
-
-
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Сотрудник не найден в БД");
                 }
-
             }
-
         }
 
+        // Обработчик нажатия кнопки "Назад", переход на страницу AdmGroupPage
         private void ButtonBackUp_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new AdmGroupPage());
         }
 
+        // Обработчик нажатия кнопки "Изменить", сохранение изменений в базе данных
         private void ButtonChange_Click(object sender, RoutedEventArgs e)
         {
             using (var db = new KindergartenDBEntities())
             {
+                // Находим ребенка в базе данных по его имени
                 var childToUpdate = db.Children.FirstOrDefault(c => c.ChildName == TxtBox_FIOChild.Text);
 
                 if (childToUpdate != null)
                 {
+                    // Обновляем данные ребенка в базе данных с учетом изменений
                     childToUpdate.ChildName = TxtBox_FIOChild.Text;
                     if (DateTime.TryParse(TxtBox_Birth.Text, out DateTime birthDate))
                     {
@@ -122,14 +121,15 @@ namespace DetSad.AdditPages
                     childToUpdate.MotherName = TxtBox_Mom.Text;
                     childToUpdate.MotherNumber = TxtBox_NumbMom.Text;
                     childToUpdate.FatherName = TxtBox_Dad.Text;
-                    childToUpdate.FatherNumber = TxtBox_NumbDad.Text;  
+                    childToUpdate.FatherNumber = TxtBox_NumbDad.Text;
                     childToUpdate.Allergy = TxtBox_Allergy.Text;
                 }
 
+                // Сохраняем изменения в базе данных и выводим сообщение об успешном изменении
                 db.SaveChanges();
                 MessageBox.Show("Вы успешно изменили данные");
-
             }
         }
     }
+
 }

@@ -39,7 +39,6 @@ namespace DetSad.AdditPages
             
             TxtBl_NameGroup.Text = $"Группа \"{GetNameGroup(medSpravka.NameGroup)}\"";
 
-            MessageBox.Show(medSpravka.ChildID.ToString());
 
 
         }
