@@ -56,6 +56,9 @@ namespace DetSad.Windows
             winTeac.Close();
         }
 
-        
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            DateFrame.NavigationService?.Navigate(new Pages.AdminPages.AdmGroupPage());
+        }
     }
 }

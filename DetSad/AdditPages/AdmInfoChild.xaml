@@ -1,0 +1,77 @@
+﻿<Page x:Class="DetSad.AdditPages.AdmInfoChild"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DetSad.AdditPages"
+      mc:Ignorable="d" 
+                        Width="880" Height="650" 
+Title="CreateOpenSpravkaPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="500*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="420*"/>
+                <RowDefinition Height="80*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350*"/>
+                    <ColumnDefinition Width="530*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Фотографаия" Style="{StaticResource ModernLabelContrStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Height="50" Margin="10,-105,0,0"/>
+                <Label Content="ФИО ребенка" Style="{StaticResource ModernLabelContrStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Дата рождения" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="ФИО матери" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Номер матери" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="ФИО отца" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Номер отца" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Аллергия" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Справка" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+                <Label Content="Договор" Style="{StaticResource ModernLabelContrStyle}" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Width="331" Height="50"/>
+
+
+                <TextBox Grid.Column="1" Grid.Row="0" Name="TxtBox_FIOChild"  Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Name="TxtBox_Birth"  Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Name="TxtBox_Mom"  Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="3" Name="TxtBox_NumbMom"  Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="4" Name="TxtBox_Dad"  Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="5" Name="TxtBox_NumbDad"  Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="6" Name="TxtBox_Allergy"  Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_Spravka" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="41"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Name="TxtBox_Dogovor" IsReadOnly="True" Style="{StaticResource ModernTextBoxContract}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="509" Height="41" Margin="1,46,0,0" Grid.RowSpan="2"/>
+
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300*"/>
+                    <ColumnDefinition Width="240*"/>
+                    <ColumnDefinition Width="240*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Вернуться назад" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="268" Click="ButtonBackUp_Click"/>
+                <Button Content="Изменить" Style="{StaticResource ModernButtonMed}" HorizontalAlignment="Center" Margin="0,16,0,0" VerticalAlignment="Top" Height="39" Width="251" Click="ButtonChange_Click" Grid.Column="2"/>
+
+            </Grid>
+        </Grid>
+        <Image HorizontalAlignment="Left" Name="ImgChild" Height="132"  Margin="220,6,0,0" VerticalAlignment="Top" Width="138"/>
+        <TextBlock TextAlignment="Left" x:Name="TxtBl_NameGroup" HorizontalAlignment="Left" Style="{StaticResource ModernTextBlockStart}" Margin="615,0,0,0" TextWrapping="Wrap" Text="TextBlock" Height="86" Width="255"/>
+        <Label Content="ГРУППА:" Style="{StaticResource ModernLabelMedStyle}" FontSize="45" HorizontalAlignment="Left" Margin="395,32,0,0" VerticalAlignment="Top" Height="68" Width="215"/>
+
+
+    </Grid>
+</Page>

@@ -68,6 +68,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdditPages\AdmInfoChild.xaml.cs">
+      <DependentUpon>AdmInfoChild.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdditPages\CreateDogovorPage.xaml.cs">
       <DependentUpon>CreateDogovorPage.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
     <Compile Include="Windows\WindowTeacher.xaml.cs">
       <DependentUpon>WindowTeacher.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdditPages\AdmInfoChild.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdditPages\CreateDogovorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
