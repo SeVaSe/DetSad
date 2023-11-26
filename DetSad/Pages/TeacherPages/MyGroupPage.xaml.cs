@@ -80,9 +80,11 @@ namespace DetSad.Pages.TeacherPages
                      NumbDad = s.FatherNumber,
                      Allergy = s.Allergy,
                      MedID = s.MedicalCertificateID,
-                     ContarctID = s.ContractID
+                     ContarctID = s.ContractID,
+                     Group = context.Groups.Where(w => w.GroupID == s.GroupID).Select(g => g.GroupName).FirstOrDefault()
 
-                 }).ToList();
+
+                }).ToList();
 
                 return studentModels;
             }

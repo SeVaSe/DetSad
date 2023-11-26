@@ -46,6 +46,7 @@ namespace DetSad.Classes
         public string Birth { get; set; } // ФИО студента
         public string MomName { get; set; } // ФИО студента
         public string NumbMom { get; set; }
+        public string Group { get; set; }
         public string  DadName { get; set; } // ФИО студента
         public string NumbDad { get; set; } // ФИО студента
         public string Allergy { get; set; } // ФИО студента

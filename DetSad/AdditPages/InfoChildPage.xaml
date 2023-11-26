@@ -67,6 +67,8 @@ Title="CreateOpenSpravkaPage">
             </Grid>
         </Grid>
         <Image HorizontalAlignment="Left" Name="ImgChild" Height="132"  Margin="220,6,0,0" VerticalAlignment="Top" Width="138"/>
+        <TextBlock TextAlignment="Left" x:Name="TxtBl_NameGroup" HorizontalAlignment="Left" Style="{StaticResource ModernTextBlockStart}" Margin="615,0,0,0" TextWrapping="Wrap" Text="TextBlock" Height="86" Width="255"/>
+        <Label Content="ГРУППА:" Style="{StaticResource ModernLabelMedStyle}" FontSize="45" HorizontalAlignment="Left" Margin="395,32,0,0" VerticalAlignment="Top" Height="68" Width="215"/>
 
 
     </Grid>

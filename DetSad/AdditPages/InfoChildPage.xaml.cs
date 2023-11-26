@@ -37,6 +37,7 @@ namespace DetSad.AdditPages
             TxtBox_Dad.Text = chd.DadName;
             TxtBox_NumbDad.Text = chd.NumbDad;
             TxtBox_Allergy.Text = chd.Allergy;
+            TxtBl_NameGroup.Text = chd.Group.Substring(0, 6) + ".";
 
 
             using (var sp = new KindergartenDBEntities())
